@@ -10,7 +10,6 @@ const PlaceholderPage = ({ title }: { title: string }) => {
 };
 
 export const ServicesPage = () => <PlaceholderPage title="Nos Services" />;
-export const TrackingPage = () => <PlaceholderPage title="Suivi de colis" />;
 export const AboutPage = () => <PlaceholderPage title="À propos" />;
 export const ContactPage = () => <PlaceholderPage title="Contact" />;
 export const QuotePage = () => <PlaceholderPage title="Demander un devis" />;
