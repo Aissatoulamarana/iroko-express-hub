@@ -10,7 +10,7 @@ import TrackingPage from "./pages/TrackingPage";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import {
-  ServicesPage, TrackingPage, AboutPage, ContactPage,
+  ServicesPage, AboutPage, ContactPage,
   QuotePage, BlogPage, LegalPage, PrivacyPage,
 } from "./pages/PlaceholderPages";
 
