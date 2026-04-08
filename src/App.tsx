@@ -9,9 +9,12 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import TrackingPage from "./pages/TrackingPage";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import ServicesPage from "./pages/ServicesPage";
+import AboutPage from "./pages/AboutPage";
+import ContactPage from "./pages/ContactPage";
+import BlogPage from "./pages/BlogPage";
 import {
-  ServicesPage, AboutPage, ContactPage,
-  QuotePage, BlogPage, LegalPage, PrivacyPage,
+  QuotePage, LegalPage, PrivacyPage,
 } from "./pages/PlaceholderPages";
 
 const queryClient = new QueryClient();
