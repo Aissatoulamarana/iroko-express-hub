@@ -14,6 +14,90 @@ export type Database = {
   }
   public: {
     Tables: {
+      blog_posts: {
+        Row: {
+          author_id: string | null
+          category: string | null
+          content: string | null
+          cover_image_url: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          meta_desc: string | null
+          meta_title: string | null
+          published_at: string | null
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id?: string | null
+          category?: string | null
+          content?: string | null
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          meta_desc?: string | null
+          meta_title?: string | null
+          published_at?: string | null
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string | null
+          category?: string | null
+          content?: string | null
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          meta_desc?: string | null
+          meta_title?: string | null
+          published_at?: string | null
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      clients: {
+        Row: {
+          company: string | null
+          country: string | null
+          created_at: string
+          email: string | null
+          id: string
+          name: string
+          phone: string | null
+          updated_at: string
+        }
+        Insert: {
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Update: {
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       contact_messages: {
         Row: {
           company: string | null
@@ -44,6 +128,87 @@ export type Database = {
           name?: string
           phone?: string | null
           service?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      quotes: {
+        Row: {
+          admin_notes: string | null
+          cargo_type: string | null
+          company: string | null
+          created_at: string
+          destination: string | null
+          email: string
+          id: string
+          name: string
+          origin: string | null
+          phone: string | null
+          status: string
+          type: string
+          updated_at: string
+          urgency: string | null
+          weight: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          cargo_type?: string | null
+          company?: string | null
+          created_at?: string
+          destination?: string | null
+          email: string
+          id?: string
+          name: string
+          origin?: string | null
+          phone?: string | null
+          status?: string
+          type: string
+          updated_at?: string
+          urgency?: string | null
+          weight?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          cargo_type?: string | null
+          company?: string | null
+          created_at?: string
+          destination?: string | null
+          email?: string
+          id?: string
+          name?: string
+          origin?: string | null
+          phone?: string | null
+          status?: string
+          type?: string
+          updated_at?: string
+          urgency?: string | null
+          weight?: string | null
         }
         Relationships: []
       }
@@ -137,6 +302,24 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       shipments_public: {
@@ -183,9 +366,16 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
+      app_role: "admin" | "staff" | "user"
       shipment_status:
         | "created"
         | "in_transit"
@@ -319,6 +509,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
+      app_role: ["admin", "staff", "user"],
       shipment_status: [
         "created",
         "in_transit",
