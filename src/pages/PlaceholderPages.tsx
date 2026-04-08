@@ -9,10 +9,6 @@ const PlaceholderPage = ({ title }: { title: string }) => {
   );
 };
 
-export const ServicesPage = () => <PlaceholderPage title="Nos Services" />;
-export const AboutPage = () => <PlaceholderPage title="À propos" />;
-export const ContactPage = () => <PlaceholderPage title="Contact" />;
 export const QuotePage = () => <PlaceholderPage title="Demander un devis" />;
-export const BlogPage = () => <PlaceholderPage title="Blog" />;
 export const LegalPage = () => <PlaceholderPage title="Mentions légales" />;
 export const PrivacyPage = () => <PlaceholderPage title="Politique de confidentialité" />;
