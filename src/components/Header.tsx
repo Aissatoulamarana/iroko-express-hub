@@ -1,23 +1,26 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const navLinks = [
-  { label: "Accueil", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Suivi", href: "/suivi" },
-  { label: "À propos", href: "/a-propos" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contact", href: "/contact" },
-];
+import LanguageSelector from "@/components/LanguageSelector";
 
 const Header = () => {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+
+  const navLinks = [
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.services"), href: "/services" },
+    { label: t("nav.tracking"), href: "/suivi" },
+    { label: t("nav.about"), href: "/a-propos" },
+    { label: t("nav.blog"), href: "/blog" },
+    { label: t("nav.contact"), href: "/contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -67,20 +70,24 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-3">
+        {/* Desktop CTA + Language */}
+        <div className="hidden lg:flex items-center gap-2">
+          <LanguageSelector />
           <Button variant="hero" size="default" asChild>
-            <Link to="/devis">Demander un devis</Link>
+            <Link to="/devis">{t("nav.quote")}</Link>
           </Button>
         </div>
 
         {/* Mobile toggle */}
-        <button
-          className="lg:hidden text-surface-foreground p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-1">
+          <LanguageSelector />
+          <button
+            className="text-surface-foreground p-2"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
@@ -108,7 +115,7 @@ const Header = () => {
                 </Link>
               ))}
               <Button variant="hero" size="lg" className="mt-4" asChild>
-                <Link to="/devis">Demander un devis</Link>
+                <Link to="/devis">{t("nav.quote")}</Link>
               </Button>
             </nav>
           </motion.div>
