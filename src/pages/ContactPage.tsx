@@ -5,30 +5,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-
-const contactInfo = [
-  { icon: MapPin, label: "Adresse", value: "123 Av. de la Libération, Kinshasa, RDC" },
-  { icon: Phone, label: "Téléphone", value: "+243 81 234 5678" },
-  { icon: Mail, label: "Email", value: "contact@irokoexpress.com" },
-  { icon: Clock, label: "Horaires", value: "Lun - Sam : 08h00 - 18h00" },
-];
+import { useTranslation } from "react-i18next";
 
 const ContactPage = () => {
+  const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement>(null);
   const heroInView = useInView(heroRef, { once: true });
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
-    name: "", company: "", email: "", phone: "", service: "", message: "",
-  });
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", service: "", message: "" });
 
-  const handleChange = (field: string, value: string) =>
-    setForm((prev) => ({ ...prev, [field]: value }));
+  const contactInfo = [
+    { icon: MapPin, label: t("contact_page.address"), value: "123 Av. de la Libération, Kinshasa, RDC" },
+    { icon: Phone, label: t("contact_page.phone"), value: "+243 81 234 5678" },
+    { icon: Mail, label: t("contact_page.email"), value: "contact@irokoexpress.com" },
+    { icon: Clock, label: t("contact_page.hours"), value: "Lun - Sam : 08h00 - 18h00" },
+  ];
+
+  const handleChange = (field: string, value: string) => setForm((prev) => ({ ...prev, [field]: value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,12 +36,8 @@ const ContactPage = () => {
     setLoading(true);
     try {
       const { error } = await supabase.from("contact_messages").insert({
-        name: form.name.trim(),
-        company: form.company.trim() || null,
-        email: form.email.trim(),
-        phone: form.phone.trim() || null,
-        service: form.service || null,
-        message: form.message.trim(),
+        name: form.name.trim(), company: form.company.trim() || null, email: form.email.trim(),
+        phone: form.phone.trim() || null, service: form.service || null, message: form.message.trim(),
       });
       if (error) throw error;
       toast({ title: "Message envoyé !", description: "Nous vous répondrons dans les plus brefs délais." });
@@ -58,104 +51,75 @@ const ContactPage = () => {
 
   return (
     <>
-      {/* Hero */}
       <section className="section-dark relative overflow-hidden pt-32 pb-20">
         <div className="grain-overlay" />
         <div className="container mx-auto px-4 lg:px-8 relative z-20" ref={heroRef}>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="text-primary font-semibold tracking-widest uppercase text-sm mb-4"
-          >
-            Parlons de votre projet
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">
+            {t("contact_page.title")}
           </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl text-surface-foreground leading-tight mb-6"
-          >
-            <span className="text-gradient-primary">Contactez</span>-nous
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl text-surface-foreground leading-tight mb-6">
+            <span className="text-gradient-primary">{t("contact_page.title")}</span>
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={heroInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-surface-foreground/70 text-lg md:text-xl max-w-2xl"
-          >
-            Une question, un besoin ? Notre équipe est à votre disposition pour vous accompagner.
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/70 text-lg md:text-xl max-w-2xl">
+            {t("contact_page.subtitle")}
           </motion.p>
         </div>
       </section>
 
-      {/* Contact form + info */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4 lg:px-8 grid lg:grid-cols-5 gap-12">
-          {/* Form */}
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Nom complet *</Label>
-                  <Input id="name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} placeholder="Jean Dupont" maxLength={100} />
+                  <Label htmlFor="name">{t("contact_page.name")} *</Label>
+                  <Input id="name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} maxLength={100} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company">Entreprise</Label>
-                  <Input id="company" value={form.company} onChange={(e) => handleChange("company", e.target.value)} placeholder="Votre entreprise" maxLength={100} />
+                  <Label htmlFor="company">{t("contact_page.company")}</Label>
+                  <Input id="company" value={form.company} onChange={(e) => handleChange("company", e.target.value)} maxLength={100} />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input id="email" type="email" value={form.email} onChange={(e) => handleChange("email", e.target.value)} placeholder="jean@exemple.com" maxLength={255} />
+                  <Label htmlFor="email">{t("contact_page.email")} *</Label>
+                  <Input id="email" type="email" value={form.email} onChange={(e) => handleChange("email", e.target.value)} maxLength={255} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Téléphone</Label>
-                  <Input id="phone" type="tel" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} placeholder="+243 ..." maxLength={20} />
+                  <Label htmlFor="phone">{t("contact_page.phone")}</Label>
+                  <Input id="phone" type="tel" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} maxLength={20} />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label>Type de service</Label>
+                <Label>{t("contact_page.service")}</Label>
                 <Select value={form.service} onValueChange={(v) => handleChange("service", v)}>
-                  <SelectTrigger><SelectValue placeholder="Sélectionner un service" /></SelectTrigger>
+                  <SelectTrigger><SelectValue placeholder={t("contact_page.selectService")} /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="dedouanement">Dédouanement</SelectItem>
-                    <SelectItem value="transit">Transit douanier</SelectItem>
-                    <SelectItem value="import-export">Import / Export</SelectItem>
-                    <SelectItem value="sourcing">Sourcing Chine</SelectItem>
-                    <SelectItem value="logistique">Logistique internationale</SelectItem>
+                    <SelectItem value="dedouanement">{t("services.customs")}</SelectItem>
+                    <SelectItem value="transit">{t("services.transit")}</SelectItem>
+                    <SelectItem value="import-export">{t("services.import")}</SelectItem>
+                    <SelectItem value="sourcing">{t("services.sourcing")}</SelectItem>
+                    <SelectItem value="logistique">{t("services.logistics")}</SelectItem>
                     <SelectItem value="autre">Autre</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="message">Message *</Label>
-                <Textarea
-                  id="message"
-                  value={form.message}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  placeholder="Décrivez votre besoin..."
-                  rows={5}
-                  maxLength={2000}
-                />
+                <Label htmlFor="message">{t("contact_page.message")} *</Label>
+                <Textarea id="message" value={form.message} onChange={(e) => handleChange("message", e.target.value)} rows={5} maxLength={2000} />
               </div>
               <Button type="submit" variant="hero" size="lg" disabled={loading} className="w-full sm:w-auto">
                 {loading ? <Loader2 className="animate-spin mr-2" /> : <Send className="mr-2 w-4 h-4" />}
-                {loading ? "Envoi en cours..." : "Envoyer le message"}
+                {loading ? t("contact_page.sending") : t("contact_page.send")}
               </Button>
             </form>
           </div>
-
-          {/* Info sidebar */}
           <div className="lg:col-span-2 space-y-6">
             {contactInfo.map((info) => {
               const Icon = info.icon;
               return (
                 <div key={info.label} className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-primary" />
-                  </div>
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0"><Icon className="w-5 h-5 text-primary" /></div>
                   <div>
                     <p className="font-semibold text-foreground text-sm">{info.label}</p>
                     <p className="text-muted-foreground text-sm">{info.value}</p>
@@ -163,19 +127,8 @@ const ContactPage = () => {
                 </div>
               );
             })}
-
-            {/* Map placeholder */}
-            <div className="rounded-2xl border border-border overflow-hidden h-64 bg-muted flex items-center justify-center">
-              <iframe
-                title="Iroko Express Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254231.6001482!2d15.2!3d-4.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a313c4c8f7d63%3A0x6a3b6b2b9e8f30c6!2sKinshasa!5e0!3m2!1sfr!2scd!4v1"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <div className="rounded-2xl border border-border overflow-hidden h-64 bg-muted">
+              <iframe title="Iroko Express Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254231.6001482!2d15.2!3d-4.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a313c4c8f7d63%3A0x6a3b6b2b9e8f30c6!2sKinshasa!5e0!3m2!1sfr!2scd!4v1" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
           </div>
         </div>
