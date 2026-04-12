@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "tracking": "Suivi",
+    "about": "À propos",
+    "blog": "Blog",
+    "contact": "Contact",
+    "quote": "Demander un devis"
+  },
+  "hero": {
+    "badge": "N°1 du Transit en Afrique Centrale",
+    "title": "Votre partenaire logistique entre",
+    "titleHighlight": "l'Afrique et le monde",
+    "description": "Transit, dédouanement et import/export entre la RDC, le Cameroun et la Chine. Rapidité, fiabilité et transparence.",
+    "cta1": "Demander un devis",
+    "cta2": "Suivre mon colis"
+  },
+  "services": {
+    "sectionTitle": "Nos Services",
+    "sectionDesc": "Des solutions logistiques complètes pour vos besoins d'import/export",
+    "customs": "Dédouanement",
+    "customsDesc": "Procédures douanières rapides et conformes pour vos marchandises en RDC et au Cameroun.",
+    "transit": "Transit International",
+    "transitDesc": "Transport multimodal sécurisé entre la Chine, le Cameroun et la RDC.",
+    "import": "Import / Export",
+    "importDesc": "Gestion complète de vos opérations commerciales internationales.",
+    "tracking": "Suivi en temps réel",
+    "trackingDesc": "Suivez vos colis étape par étape grâce à notre plateforme digitale.",
+    "sourcing": "Sourcing Chine",
+    "sourcingDesc": "Recherche de fournisseurs et négociation en Chine pour vos produits.",
+    "logistics": "Logistique intégrée",
+    "logisticsDesc": "Solutions de bout en bout : emballage, entreposage et livraison."
+  },
+  "howItWorks": {
+    "title": "Comment ça marche ?",
+    "subtitle": "Un processus simple en 4 étapes",
+    "step1Title": "Demande de devis",
+    "step1Desc": "Remplissez notre formulaire en ligne avec les détails de votre envoi.",
+    "step2Title": "Étude & Proposition",
+    "step2Desc": "Notre équipe analyse votre demande et vous envoie une offre personnalisée.",
+    "step3Title": "Expédition & Suivi",
+    "step3Desc": "Nous prenons en charge l'expédition et vous suivez en temps réel.",
+    "step4Title": "Livraison & Dédouanement",
+    "step4Desc": "Réception de vos marchandises avec dédouanement inclus."
+  },
+  "stats": {
+    "clients": "Clients satisfaits",
+    "countries": "Pays desservis",
+    "years": "Années d'expérience",
+    "shipments": "Colis livrés"
+  },
+  "testimonials": {
+    "title": "Ce que disent nos clients",
+    "subtitle": "Des entreprises nous font confiance"
+  },
+  "cta": {
+    "title": "Prêt à expédier ?",
+    "description": "Obtenez votre devis gratuit en moins de 24h. Notre équipe d'experts est à votre disposition.",
+    "button1": "Demander un devis gratuit",
+    "button2": "Nous contacter"
+  },
+  "tracking_page": {
+    "title": "Suivi de colis",
+    "subtitle": "Entrez votre numéro de suivi pour localiser votre colis en temps réel",
+    "placeholder": "Ex: IE-2024-000123",
+    "search": "Rechercher",
+    "searching": "Recherche...",
+    "notFound": "Aucun colis trouvé avec ce numéro de suivi.",
+    "error": "Erreur lors de la recherche. Veuillez réessayer.",
+    "details": "Détails du colis",
+    "origin": "Origine",
+    "destination": "Destination",
+    "weight": "Poids",
+    "type": "Type",
+    "client": "Client",
+    "estimated": "Livraison estimée",
+    "timeline": "Historique du suivi",
+    "noEvents": "Aucun événement enregistré."
+  },
+  "contact_page": {
+    "title": "Contactez-nous",
+    "subtitle": "Notre équipe est à votre disposition pour répondre à vos questions",
+    "name": "Nom complet",
+    "company": "Entreprise",
+    "email": "Adresse e-mail",
+    "phone": "Téléphone",
+    "service": "Service concerné",
+    "message": "Votre message",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "selectService": "Sélectionnez un service",
+    "address": "Adresse",
+    "hours": "Horaires"
+  },
+  "about_page": {
+    "title": "À propos d'Iroko Express",
+    "subtitle": "Votre partenaire logistique de confiance entre l'Afrique et l'Asie",
+    "missionTitle": "Notre Mission",
+    "missionDesc": "Faciliter les échanges commerciaux entre l'Afrique et le monde en offrant des services logistiques fiables, rapides et transparents.",
+    "valuesTitle": "Nos Valeurs",
+    "timelineTitle": "Notre Histoire",
+    "teamTitle": "Notre Équipe"
+  },
+  "blog_page": {
+    "title": "Blog & Actualités",
+    "subtitle": "Restez informé sur le monde du transit et de la logistique",
+    "readMore": "Lire l'article",
+    "all": "Tous",
+    "featured": "À la une",
+    "noArticles": "Aucun article dans cette catégorie."
+  },
+  "footer": {
+    "description": "Votre partenaire logistique de confiance pour le transit, l'import/export et le dédouanement entre l'Afrique et le monde.",
+    "services": "Services",
+    "company": "Entreprise",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Recevez nos actualités et offres",
+    "emailPlaceholder": "Votre e-mail",
+    "rights": "Tous droits réservés."
+  }
+}

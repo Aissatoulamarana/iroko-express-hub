@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Ndako",
+    "services": "Misala",
+    "tracking": "Kolanda",
+    "about": "Mpo na biso",
+    "blog": "Masolo",
+    "contact": "Kosolola",
+    "quote": "Kosɛnga devis"
+  },
+  "hero": {
+    "badge": "N°1 ya Transit na Afrika ya Kati",
+    "title": "Moninga na yo ya logistique kati na",
+    "titleHighlight": "Afrika na mokili mobimba",
+    "description": "Transit, dédouanement mpe import/export kati na RDC, Cameroun mpe Chine. Mbangu, bosembo mpe transparence.",
+    "cta1": "Kosɛnga devis",
+    "cta2": "Kolanda colis na ngai"
+  },
+  "services": {
+    "sectionTitle": "Misala na biso",
+    "sectionDesc": "Résolutions ya logistique mobimba mpo na bosenga na yo ya import/export",
+    "customs": "Dédouanement",
+    "customsDesc": "Procédures ya douane ya mbangu mpe ya mobeko mpo na biloko na yo na RDC mpe Cameroun.",
+    "transit": "Transit International",
+    "transitDesc": "Transport multimodal ya sécurité kati na Chine, Cameroun mpe RDC.",
+    "import": "Import / Export",
+    "importDesc": "Gestion mobimba ya opérations na yo ya commerce international.",
+    "tracking": "Kolanda en temps réel",
+    "trackingDesc": "Landá biloko na yo étape par étape na plateforme na biso ya numérique.",
+    "sourcing": "Koluka na Chine",
+    "sourcingDesc": "Koluka ba fournisseurs mpe kosalela négociation na Chine mpo na biloko na yo.",
+    "logistics": "Logistique intégrée",
+    "logisticsDesc": "Solutions ya bout en bout: emballage, entreposage mpe livraison."
+  },
+  "howItWorks": {
+    "title": "Ndenge esalamaka",
+    "subtitle": "Procédure ya pete na étapes 4",
+    "step1Title": "Kosɛnga devis",
+    "step1Desc": "Tondisa formulaire na biso na internet na détails ya envoi na yo.",
+    "step2Title": "Étude & Proposition",
+    "step2Desc": "Équipe na biso etalelaka demande na yo mpe etindelaka yo offre personnalisée.",
+    "step3Title": "Expédition & Suivi",
+    "step3Desc": "Tokambaka expédition mpe olandaka na temps réel.",
+    "step4Title": "Livraison & Dédouanement",
+    "step4Desc": "Kozwa biloko na yo na dédouanement inclus."
+  },
+  "stats": {
+    "clients": "Ba clients ya esengo",
+    "countries": "Bikólo",
+    "years": "Bambula ya expérience",
+    "shipments": "Biloko bitindamaki"
+  },
+  "testimonials": {
+    "title": "Oyo ba clients na biso balobaka",
+    "subtitle": "Ba entreprises batyelaka biso motema"
+  },
+  "cta": {
+    "title": "Opesi mpo na kotinda?",
+    "description": "Zwa devis na yo ya ofele na kati ya ngonga 24. Équipe na biso ya ba experts ezali na lisalisi na yo.",
+    "button1": "Kosɛnga devis ya ofele",
+    "button2": "Kosolola na biso"
+  },
+  "tracking_page": {
+    "title": "Kolanda colis",
+    "subtitle": "Kokotisa numéro ya suivi mpo na koyeba esika colis na yo ezali",
+    "placeholder": "Ndakisa: IE-2024-000123",
+    "search": "Koluka",
+    "searching": "Koluka...",
+    "notFound": "Colis moko te emonanaki na numéro oyo ya suivi.",
+    "error": "Erreur na koluka. Svp meka lisusu.",
+    "details": "Détails ya colis",
+    "origin": "Esika ya kobanda",
+    "destination": "Esika ya kokóma",
+    "weight": "Kilo",
+    "type": "Lolenge",
+    "client": "Client",
+    "estimated": "Mokolo ya livraison",
+    "timeline": "Historique ya suivi",
+    "noEvents": "Événement moko te."
+  },
+  "contact_page": {
+    "title": "Kosolola na biso",
+    "subtitle": "Équipe na biso ezali mpo na koyanola na mituna na yo",
+    "name": "Nkombo mobimba",
+    "company": "Entreprise",
+    "email": "Adresse e-mail",
+    "phone": "Téléphone",
+    "service": "Service",
+    "message": "Nsango na yo",
+    "send": "Kotinda nsango",
+    "sending": "Kotinda...",
+    "selectService": "Poná service",
+    "address": "Adresse",
+    "hours": "Ngonga"
+  },
+  "about_page": {
+    "title": "Mpo na Iroko Express",
+    "subtitle": "Moninga na yo ya logistique ya bosembo kati na Afrika mpe Asie",
+    "missionTitle": "Mission na biso",
+    "missionDesc": "Kopesa maboko na commerce kati na Afrika mpe mokili na kopesa misala ya logistique ya bosembo, mbangu mpe transparence.",
+    "valuesTitle": "Valeurs na biso",
+    "timelineTitle": "Lisolo na biso",
+    "teamTitle": "Équipe na biso"
+  },
+  "blog_page": {
+    "title": "Blog & Sango",
+    "subtitle": "Tikalá na sango ya transit mpe logistique",
+    "readMore": "Tanga lisolo",
+    "all": "Nyonso",
+    "featured": "Ya liboso",
+    "noArticles": "Lisolo moko te na catégorie oyo."
+  },
+  "footer": {
+    "description": "Moninga na yo ya logistique ya bosembo mpo na transit, import/export mpe dédouanement kati na Afrika mpe mokili.",
+    "services": "Misala",
+    "company": "Entreprise",
+    "legal": "Makambo ya mibeko",
+    "privacy": "Politique ya confidentialité",
+    "newsletter": "Sango",
+    "newsletterDesc": "Zwa sango mpe offres na biso",
+    "emailPlaceholder": "E-mail na yo",
+    "rights": "Droits nyonso ebombami."
+  }
+}
