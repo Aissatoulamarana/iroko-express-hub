@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "tracking": "Tracking",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact",
+    "quote": "Request a Quote"
+  },
+  "hero": {
+    "badge": "#1 Transit Company in Central Africa",
+    "title": "Your logistics partner between",
+    "titleHighlight": "Africa and the world",
+    "description": "Transit, customs clearance and import/export between DRC, Cameroon and China. Speed, reliability and transparency.",
+    "cta1": "Request a Quote",
+    "cta2": "Track my shipment"
+  },
+  "services": {
+    "sectionTitle": "Our Services",
+    "sectionDesc": "Complete logistics solutions for your import/export needs",
+    "customs": "Customs Clearance",
+    "customsDesc": "Fast and compliant customs procedures for your goods in DRC and Cameroon.",
+    "transit": "International Transit",
+    "transitDesc": "Secure multimodal transport between China, Cameroon and DRC.",
+    "import": "Import / Export",
+    "importDesc": "Complete management of your international trade operations.",
+    "tracking": "Real-time Tracking",
+    "trackingDesc": "Track your shipments step by step with our digital platform.",
+    "sourcing": "China Sourcing",
+    "sourcingDesc": "Supplier search and negotiation in China for your products.",
+    "logistics": "Integrated Logistics",
+    "logisticsDesc": "End-to-end solutions: packaging, warehousing and delivery."
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "A simple 4-step process",
+    "step1Title": "Request a Quote",
+    "step1Desc": "Fill out our online form with your shipment details.",
+    "step2Title": "Study & Proposal",
+    "step2Desc": "Our team analyzes your request and sends you a personalized offer.",
+    "step3Title": "Shipping & Tracking",
+    "step3Desc": "We handle the shipping and you track it in real time.",
+    "step4Title": "Delivery & Clearance",
+    "step4Desc": "Receive your goods with customs clearance included."
+  },
+  "stats": {
+    "clients": "Satisfied clients",
+    "countries": "Countries served",
+    "years": "Years of experience",
+    "shipments": "Packages delivered"
+  },
+  "testimonials": {
+    "title": "What our clients say",
+    "subtitle": "Companies trust us"
+  },
+  "cta": {
+    "title": "Ready to ship?",
+    "description": "Get your free quote in less than 24 hours. Our team of experts is at your service.",
+    "button1": "Get a free quote",
+    "button2": "Contact us"
+  },
+  "tracking_page": {
+    "title": "Shipment Tracking",
+    "subtitle": "Enter your tracking number to locate your shipment in real time",
+    "placeholder": "E.g: IE-2024-000123",
+    "search": "Search",
+    "searching": "Searching...",
+    "notFound": "No shipment found with this tracking number.",
+    "error": "Error during search. Please try again.",
+    "details": "Shipment Details",
+    "origin": "Origin",
+    "destination": "Destination",
+    "weight": "Weight",
+    "type": "Type",
+    "client": "Client",
+    "estimated": "Estimated Delivery",
+    "timeline": "Tracking History",
+    "noEvents": "No events recorded."
+  },
+  "contact_page": {
+    "title": "Contact Us",
+    "subtitle": "Our team is available to answer your questions",
+    "name": "Full Name",
+    "company": "Company",
+    "email": "Email Address",
+    "phone": "Phone",
+    "service": "Related Service",
+    "message": "Your Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "selectService": "Select a service",
+    "address": "Address",
+    "hours": "Hours"
+  },
+  "about_page": {
+    "title": "About Iroko Express",
+    "subtitle": "Your trusted logistics partner between Africa and Asia",
+    "missionTitle": "Our Mission",
+    "missionDesc": "Facilitating trade between Africa and the world by offering reliable, fast and transparent logistics services.",
+    "valuesTitle": "Our Values",
+    "timelineTitle": "Our History",
+    "teamTitle": "Our Team"
+  },
+  "blog_page": {
+    "title": "Blog & News",
+    "subtitle": "Stay informed about transit and logistics",
+    "readMore": "Read Article",
+    "all": "All",
+    "featured": "Featured",
+    "noArticles": "No articles in this category."
+  },
+  "footer": {
+    "description": "Your trusted logistics partner for transit, import/export and customs clearance between Africa and the world.",
+    "services": "Services",
+    "company": "Company",
+    "legal": "Legal Notice",
+    "privacy": "Privacy Policy",
+    "newsletter": "Newsletter",
+    "newsletterDesc": "Receive our news and offers",
+    "emailPlaceholder": "Your email",
+    "rights": "All rights reserved."
+  }
+}

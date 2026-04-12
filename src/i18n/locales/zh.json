@@ -1,0 +1,124 @@
+{
+  "nav": {
+    "home": "首页",
+    "services": "服务",
+    "tracking": "追踪",
+    "about": "关于我们",
+    "blog": "博客",
+    "contact": "联系我们",
+    "quote": "获取报价"
+  },
+  "hero": {
+    "badge": "中非第一物流公司",
+    "title": "您在",
+    "titleHighlight": "非洲与世界之间的物流伙伴",
+    "description": "刚果民主共和国、喀麦隆与中国之间的运输、清关和进出口服务。快速、可靠、透明。",
+    "cta1": "获取报价",
+    "cta2": "追踪包裹"
+  },
+  "services": {
+    "sectionTitle": "我们的服务",
+    "sectionDesc": "满足您进出口需求的全方位物流解决方案",
+    "customs": "清关服务",
+    "customsDesc": "在刚果和喀麦隆为您的货物提供快速合规的清关手续。",
+    "transit": "国际运输",
+    "transitDesc": "中国、喀麦隆和刚果之间安全的多式联运。",
+    "import": "进出口",
+    "importDesc": "全面管理您的国际贸易业务。",
+    "tracking": "实时追踪",
+    "trackingDesc": "通过我们的数字平台逐步追踪您的货物。",
+    "sourcing": "中国采购",
+    "sourcingDesc": "为您的产品在中国寻找供应商并进行谈判。",
+    "logistics": "综合物流",
+    "logisticsDesc": "端到端解决方案：包装、仓储和配送。"
+  },
+  "howItWorks": {
+    "title": "运作方式",
+    "subtitle": "简单的四步流程",
+    "step1Title": "获取报价",
+    "step1Desc": "在我们的在线表格中填写您的发货详情。",
+    "step2Title": "研究与提案",
+    "step2Desc": "我们的团队分析您的需求并发送个性化报价。",
+    "step3Title": "发货与追踪",
+    "step3Desc": "我们负责发货，您可以实时追踪。",
+    "step4Title": "交付与清关",
+    "step4Desc": "收到您的货物，含清关服务。"
+  },
+  "stats": {
+    "clients": "满意客户",
+    "countries": "服务国家",
+    "years": "年经验",
+    "shipments": "已交付包裹"
+  },
+  "testimonials": {
+    "title": "客户评价",
+    "subtitle": "企业信赖我们"
+  },
+  "cta": {
+    "title": "准备发货？",
+    "description": "24小时内获取免费报价。我们的专家团队随时为您服务。",
+    "button1": "获取免费报价",
+    "button2": "联系我们"
+  },
+  "tracking_page": {
+    "title": "包裹追踪",
+    "subtitle": "输入追踪号码以实时定位您的包裹",
+    "placeholder": "例如：IE-2024-000123",
+    "search": "搜索",
+    "searching": "搜索中...",
+    "notFound": "未找到此追踪号码的包裹。",
+    "error": "搜索出错，请重试。",
+    "details": "包裹详情",
+    "origin": "始发地",
+    "destination": "目的地",
+    "weight": "重量",
+    "type": "类型",
+    "client": "客户",
+    "estimated": "预计交付",
+    "timeline": "追踪历史",
+    "noEvents": "暂无记录。"
+  },
+  "contact_page": {
+    "title": "联系我们",
+    "subtitle": "我们的团队随时为您解答问题",
+    "name": "全名",
+    "company": "公司",
+    "email": "电子邮件",
+    "phone": "电话",
+    "service": "相关服务",
+    "message": "您的留言",
+    "send": "发送消息",
+    "sending": "发送中...",
+    "selectService": "选择服务",
+    "address": "地址",
+    "hours": "营业时间"
+  },
+  "about_page": {
+    "title": "关于 Iroko Express",
+    "subtitle": "您在非洲与亚洲之间值得信赖的物流伙伴",
+    "missionTitle": "我们的使命",
+    "missionDesc": "通过提供可靠、快速和透明的物流服务，促进非洲与世界之间的贸易。",
+    "valuesTitle": "我们的价值观",
+    "timelineTitle": "我们的历史",
+    "teamTitle": "我们的团队"
+  },
+  "blog_page": {
+    "title": "博客与资讯",
+    "subtitle": "了解运输和物流领域的最新动态",
+    "readMore": "阅读文章",
+    "all": "全部",
+    "featured": "精选",
+    "noArticles": "此类别暂无文章。"
+  },
+  "footer": {
+    "description": "您在非洲与世界之间值得信赖的运输、进出口和清关物流伙伴。",
+    "services": "服务",
+    "company": "公司",
+    "legal": "法律声明",
+    "privacy": "隐私政策",
+    "newsletter": "新闻通讯",
+    "newsletterDesc": "接收我们的新闻和优惠",
+    "emailPlaceholder": "您的邮箱",
+    "rights": "保留所有权利。"
+  }
+}
