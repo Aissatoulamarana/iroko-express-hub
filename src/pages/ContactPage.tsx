@@ -51,50 +51,49 @@ const ContactPage = () => {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-secondary relative overflow-hidden pt-40 pb-24">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative z-20" ref={heroRef}>
-          <motion.span initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-accent text-xs font-bold uppercase tracking-widest block mb-6">
+      <section className="section-dark relative overflow-hidden pt-32 pb-20">
+        <div className="grain-overlay" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-20" ref={heroRef}>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">
             {t("contact_page.title")}
-          </motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl md:text-7xl font-bold tracking-tighter uppercase text-surface-foreground leading-[0.85] mb-6">
-            <span className="text-primary">{t("contact_page.title")}</span>
+          </motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl text-surface-foreground leading-tight mb-6">
+            <span className="text-gradient-primary">{t("contact_page.title")}</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/50 text-lg lg:text-xl max-w-2xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/70 text-lg md:text-xl max-w-2xl">
             {t("contact_page.subtitle")}
           </motion.p>
         </div>
       </section>
 
-      {/* Form + Info */}
-      <section className="py-24 bg-background">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-5 gap-16">
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4 lg:px-8 grid lg:grid-cols-5 gap-12">
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-xs uppercase tracking-widest font-bold">{t("contact_page.name")} *</Label>
-                  <Input id="name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} maxLength={100} className="border-border bg-muted/50 focus:border-primary" />
+                  <Label htmlFor="name">{t("contact_page.name")} *</Label>
+                  <Input id="name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} maxLength={100} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company" className="text-xs uppercase tracking-widest font-bold">{t("contact_page.company")}</Label>
-                  <Input id="company" value={form.company} onChange={(e) => handleChange("company", e.target.value)} maxLength={100} className="border-border bg-muted/50 focus:border-primary" />
+                  <Label htmlFor="company">{t("contact_page.company")}</Label>
+                  <Input id="company" value={form.company} onChange={(e) => handleChange("company", e.target.value)} maxLength={100} />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-xs uppercase tracking-widest font-bold">{t("contact_page.email")} *</Label>
-                  <Input id="email" type="email" value={form.email} onChange={(e) => handleChange("email", e.target.value)} maxLength={255} className="border-border bg-muted/50 focus:border-primary" />
+                  <Label htmlFor="email">{t("contact_page.email")} *</Label>
+                  <Input id="email" type="email" value={form.email} onChange={(e) => handleChange("email", e.target.value)} maxLength={255} />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-xs uppercase tracking-widest font-bold">{t("contact_page.phone")}</Label>
-                  <Input id="phone" type="tel" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} maxLength={20} className="border-border bg-muted/50 focus:border-primary" />
+                  <Label htmlFor="phone">{t("contact_page.phone")}</Label>
+                  <Input id="phone" type="tel" value={form.phone} onChange={(e) => handleChange("phone", e.target.value)} maxLength={20} />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label className="text-xs uppercase tracking-widest font-bold">{t("contact_page.service")}</Label>
+                <Label>{t("contact_page.service")}</Label>
                 <Select value={form.service} onValueChange={(v) => handleChange("service", v)}>
-                  <SelectTrigger className="border-border bg-muted/50"><SelectValue placeholder={t("contact_page.selectService")} /></SelectTrigger>
+                  <SelectTrigger><SelectValue placeholder={t("contact_page.selectService")} /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="dedouanement">{t("services.customs")}</SelectItem>
                     <SelectItem value="transit">{t("services.transit")}</SelectItem>
@@ -106,29 +105,29 @@ const ContactPage = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-xs uppercase tracking-widest font-bold">{t("contact_page.message")} *</Label>
-                <Textarea id="message" value={form.message} onChange={(e) => handleChange("message", e.target.value)} rows={5} maxLength={2000} className="border-border bg-muted/50 focus:border-primary" />
+                <Label htmlFor="message">{t("contact_page.message")} *</Label>
+                <Textarea id="message" value={form.message} onChange={(e) => handleChange("message", e.target.value)} rows={5} maxLength={2000} />
               </div>
-              <Button type="submit" variant="default" size="lg" disabled={loading}>
+              <Button type="submit" variant="hero" size="lg" disabled={loading} className="w-full sm:w-auto">
                 {loading ? <Loader2 className="animate-spin mr-2" /> : <Send className="mr-2 w-4 h-4" />}
                 {loading ? t("contact_page.sending") : t("contact_page.send")}
               </Button>
             </form>
           </div>
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-6">
             {contactInfo.map((info) => {
               const Icon = info.icon;
               return (
-                <div key={info.label} className="flex items-start gap-4 p-6 border border-border">
-                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center shrink-0"><Icon className="w-5 h-5 text-primary" /></div>
+                <div key={info.label} className="flex items-start gap-4 p-5 rounded-2xl border border-border bg-card">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0"><Icon className="w-5 h-5 text-primary" /></div>
                   <div>
-                    <p className="font-bold text-foreground text-xs uppercase tracking-widest">{info.label}</p>
-                    <p className="text-muted-foreground text-sm mt-1">{info.value}</p>
+                    <p className="font-semibold text-foreground text-sm">{info.label}</p>
+                    <p className="text-muted-foreground text-sm">{info.value}</p>
                   </div>
                 </div>
               );
             })}
-            <div className="border border-border overflow-hidden h-64 bg-muted">
+            <div className="rounded-2xl border border-border overflow-hidden h-64 bg-muted">
               <iframe title="Iroko Express Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254231.6001482!2d15.2!3d-4.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a313c4c8f7d63%3A0x6a3b6b2b9e8f30c6!2sKinshasa!5e0!3m2!1sfr!2scd!4v1" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
           </div>

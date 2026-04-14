@@ -14,56 +14,52 @@ const ServicesPage = () => {
   const gridInView = useInView(gridRef, { once: true, margin: "-80px" });
 
   const services = [
-    { icon: ShieldCheck, title: t("services.customs"), description: t("services.customsDesc"), phase: "01", steps: ["Analyse de la documentation commerciale", "Classification tarifaire et calcul des droits", "Soumission de la déclaration en douane", "Inspection et mainlevée des marchandises", "Livraison après dédouanement"] },
-    { icon: Ship, title: t("services.transit"), description: t("services.transitDesc"), phase: "02", steps: ["Établissement du document de transit (T1/T2)", "Scellage et prise en charge du conteneur", "Acheminement vers le bureau de destination", "Suivi GPS en temps réel", "Apurement du transit à destination"] },
-    { icon: PackageSearch, title: t("services.import"), description: t("services.importDesc"), phase: "03", steps: ["Consultation et planification logistique", "Négociation des tarifs fret (mer/air/route)", "Gestion documentaire complète", "Coordination du transport multimodal", "Livraison porte-à-porte"] },
-    { icon: Globe, title: t("services.tracking"), description: t("services.trackingDesc"), phase: "04", steps: ["Attribution d'un numéro de suivi unique", "Mise à jour en temps réel du statut", "Notifications SMS et email", "Accès client à la plateforme de suivi", "Rapport de livraison avec preuve"] },
-    { icon: ShoppingCart, title: t("services.sourcing"), description: t("services.sourcingDesc"), phase: "05", steps: ["Recherche et sélection de fournisseurs", "Négociation des prix et conditions", "Contrôle qualité en usine", "Consolidation et emballage export", "Expédition et suivi jusqu'à destination"] },
-    { icon: Truck, title: t("services.logistics"), description: t("services.logisticsDesc"), phase: "06", steps: ["Étude des besoins et devis personnalisé", "Réservation du fret (FCL/LCL, air cargo)", "Gestion de l'entreposage et du groupage", "Coordination des transports locaux", "Livraison finale et confirmation"] },
+    { icon: ShieldCheck, title: t("services.customs"), description: t("services.customsDesc"), steps: ["Analyse de la documentation commerciale", "Classification tarifaire et calcul des droits", "Soumission de la déclaration en douane", "Inspection et mainlevée des marchandises", "Livraison après dédouanement"] },
+    { icon: Ship, title: t("services.transit"), description: t("services.transitDesc"), steps: ["Établissement du document de transit (T1/T2)", "Scellage et prise en charge du conteneur", "Acheminement vers le bureau de destination", "Suivi GPS en temps réel", "Apurement du transit à destination"] },
+    { icon: PackageSearch, title: t("services.import"), description: t("services.importDesc"), steps: ["Consultation et planification logistique", "Négociation des tarifs fret (mer/air/route)", "Gestion documentaire complète", "Coordination du transport multimodal", "Livraison porte-à-porte"] },
+    { icon: Globe, title: t("services.tracking"), description: t("services.trackingDesc"), steps: ["Attribution d'un numéro de suivi unique", "Mise à jour en temps réel du statut", "Notifications SMS et email", "Accès client à la plateforme de suivi", "Rapport de livraison avec preuve"] },
+    { icon: ShoppingCart, title: t("services.sourcing"), description: t("services.sourcingDesc"), steps: ["Recherche et sélection de fournisseurs", "Négociation des prix et conditions", "Contrôle qualité en usine", "Consolidation et emballage export", "Expédition et suivi jusqu'à destination"] },
+    { icon: Truck, title: t("services.logistics"), description: t("services.logisticsDesc"), steps: ["Étude des besoins et devis personnalisé", "Réservation du fret (FCL/LCL, air cargo)", "Gestion de l'entreposage et du groupage", "Coordination des transports locaux", "Livraison finale et confirmation"] },
   ];
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-secondary relative overflow-hidden pt-40 pb-24">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative z-20" ref={heroRef}>
-          <motion.span initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-accent text-xs font-bold uppercase tracking-widest block mb-6">
+      <section className="section-dark relative overflow-hidden pt-32 pb-20">
+        <div className="grain-overlay" />
+        <div className="container mx-auto px-4 lg:px-8 relative z-20" ref={heroRef}>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">
             {t("services.sectionTitle")}
-          </motion.span>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-surface-foreground leading-[0.85] mb-6">
+          </motion.p>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl text-surface-foreground leading-tight mb-6">
             {t("services.sectionTitle")}
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/50 text-lg lg:text-xl max-w-2xl font-light">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/70 text-lg md:text-xl max-w-2xl">
             {t("services.sectionDesc")}
           </motion.p>
         </div>
       </section>
 
-      {/* Services grid */}
-      <section className="py-24 bg-background" ref={gridRef}>
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 space-y-0">
+      <section className="py-20 bg-background" ref={gridRef}>
+        <div className="container mx-auto px-4 lg:px-8 space-y-16">
           {services.map((service, i) => {
             const Icon = service.icon;
             return (
-              <motion.div key={i} initial={{ opacity: 0, y: 40 }} animate={gridInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: i * 0.08 }} className="grid md:grid-cols-2 gap-8 py-12 border-b border-border items-start">
-                <div className="flex gap-8">
-                  <span className="text-4xl font-bold tabular-nums text-muted-foreground/20">{service.phase}</span>
-                  <div>
-                    <Icon className="w-6 h-6 text-primary mb-4" />
-                    <h2 className="font-bold text-2xl md:text-3xl uppercase tracking-tight text-foreground mb-3">{service.title}</h2>
-                    <p className="text-muted-foreground leading-relaxed font-light">{service.description}</p>
-                    <Button variant="link" className="mt-4 px-0 text-primary" asChild>
-                      <Link to="/devis">{t("nav.quote")} <ArrowRight className="ml-1 w-4 h-4" /></Link>
-                    </Button>
-                  </div>
+              <motion.div key={i} initial={{ opacity: 0, y: 40 }} animate={gridInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: i * 0.1 }} className="grid md:grid-cols-2 gap-8 items-start">
+                <div className="rounded-2xl border border-border bg-card p-8 hover-lift">
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5"><Icon className="w-7 h-7 text-primary" /></div>
+                  <h2 className="font-display font-bold text-2xl md:text-3xl text-foreground mb-3">{service.title}</h2>
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                  <Button variant="link" className="mt-4 px-0 text-primary" asChild>
+                    <Link to="/devis">{t("nav.quote")} <ArrowRight className="ml-1 w-4 h-4" /></Link>
+                  </Button>
                 </div>
                 <Accordion type="single" collapsible className="w-full">
-                  <AccordionItem value="process" className="border px-6">
-                    <AccordionTrigger className="font-bold text-sm uppercase tracking-widest hover:no-underline">Processus détaillé</AccordionTrigger>
+                  <AccordionItem value="process" className="border rounded-2xl px-6">
+                    <AccordionTrigger className="font-display font-semibold text-lg hover:no-underline">Processus détaillé</AccordionTrigger>
                     <AccordionContent>
                       <ol className="space-y-3">
                         {service.steps.map((step, j) => (
-                          <li key={j} className="flex items-start gap-3"><CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" /><span className="text-muted-foreground text-sm">{step}</span></li>
+                          <li key={j} className="flex items-start gap-3"><CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" /><span className="text-muted-foreground">{step}</span></li>
                         ))}
                       </ol>
                     </AccordionContent>
@@ -75,13 +71,11 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-primary py-20">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row justify-between items-center gap-8">
-          <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tighter text-primary-foreground">{t("cta.title")}</h2>
-          <Link to="/devis" className="px-10 py-5 bg-secondary text-secondary-foreground font-bold uppercase tracking-widest hover:bg-accent transition-colors duration-300">
-            {t("nav.quote")}
-          </Link>
+      <section className="bg-primary py-16">
+        <div className="container mx-auto px-4 lg:px-8 text-center">
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-primary-foreground mb-4">{t("cta.title")}</h2>
+          <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">{t("cta.description")}</p>
+          <Button variant="secondary" size="xl" asChild><Link to="/devis">{t("nav.quote")}</Link></Button>
         </div>
       </section>
     </>
