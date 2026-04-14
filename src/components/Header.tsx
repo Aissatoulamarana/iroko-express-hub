@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import LanguageSelector from "@/components/LanguageSelector";
 
@@ -35,34 +34,29 @@ const Header = () => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-        scrolled
-          ? "bg-secondary/95 backdrop-blur-xl shadow-lg shadow-secondary/20 py-3"
-          : "bg-transparent py-5"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 mix-blend-difference",
+        scrolled ? "py-4" : "py-6 lg:py-8"
       )}
     >
-      <div className="container mx-auto flex items-center justify-between px-4 lg:px-8">
+      <div className="max-w-[1600px] mx-auto flex items-center justify-between px-6 lg:px-12">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-display font-extrabold text-primary-foreground text-lg group-hover:scale-105 transition-transform">
-            IE
-          </div>
-          <span className="font-display font-bold text-xl text-surface-foreground tracking-tight">
-            Iroko<span className="text-primary">Express</span>
+        <Link to="/" className="group">
+          <span className="font-bold text-2xl tracking-tighter text-white uppercase">
+            Iroko<span className="text-primary">—</span>Express
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               className={cn(
-                "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+                "text-sm font-medium uppercase tracking-widest transition-all duration-300 text-white",
                 location.pathname === link.href
-                  ? "text-primary bg-primary/10"
-                  : "text-surface-foreground/70 hover:text-primary hover:bg-primary/5"
+                  ? "opacity-100"
+                  : "opacity-50 hover:opacity-100"
               )}
             >
               {link.label}
@@ -71,18 +65,21 @@ const Header = () => {
         </nav>
 
         {/* Desktop CTA + Language */}
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-4">
           <LanguageSelector />
-          <Button variant="hero" size="default" asChild>
-            <Link to="/devis">{t("nav.quote")}</Link>
-          </Button>
+          <Link
+            to="/devis"
+            className="px-6 py-3 bg-primary text-primary-foreground text-sm font-bold uppercase tracking-widest hover:bg-accent transition-colors duration-300"
+          >
+            {t("nav.quote")}
+          </Link>
         </div>
 
         {/* Mobile toggle */}
-        <div className="lg:hidden flex items-center gap-1">
+        <div className="lg:hidden flex items-center gap-2">
           <LanguageSelector />
           <button
-            className="text-surface-foreground p-2"
+            className="text-white p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -97,26 +94,30 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-secondary/98 backdrop-blur-xl border-t border-surface-foreground/10"
+            className="lg:hidden bg-secondary border-t border-surface-foreground/10"
+            style={{ mixBlendMode: "normal" }}
           >
-            <nav className="container mx-auto px-4 py-6 flex flex-col gap-2">
+            <nav className="px-6 py-8 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   className={cn(
-                    "px-4 py-3 rounded-lg text-base font-medium transition-all",
+                    "px-4 py-3 text-sm font-medium uppercase tracking-widest transition-all",
                     location.pathname === link.href
-                      ? "text-primary bg-primary/10"
-                      : "text-surface-foreground/70 hover:text-primary"
+                      ? "text-primary"
+                      : "text-surface-foreground/60 hover:text-primary"
                   )}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button variant="hero" size="lg" className="mt-4" asChild>
-                <Link to="/devis">{t("nav.quote")}</Link>
-              </Button>
+              <Link
+                to="/devis"
+                className="mt-4 px-6 py-4 bg-primary text-primary-foreground text-center text-sm font-bold uppercase tracking-widest"
+              >
+                {t("nav.quote")}
+              </Link>
             </nav>
           </motion.div>
         )}

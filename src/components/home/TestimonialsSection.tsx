@@ -18,37 +18,62 @@ const TestimonialsSection = () => {
   const prev = () => setActive((p) => (p - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="py-20 lg:py-28 section-dark overflow-hidden">
-      <div className="grain-overlay" />
-      <div className="container mx-auto px-4 lg:px-8 relative z-20">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }} className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            {t("testimonials.subtitle")}
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-surface-foreground mb-4">
-            {t("testimonials.title")}
-          </h2>
-        </motion.div>
-        <div className="max-w-3xl mx-auto">
-          <motion.div key={active} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} className="glass-card p-8 md:p-12 text-center">
-            <div className="flex justify-center gap-1 mb-6">
-              {Array.from({ length: testimonials[active].rating }).map((_, i) => (
-                <Star key={i} size={20} className="fill-primary text-primary" />
-              ))}
-            </div>
-            <p className="text-surface-foreground/90 text-lg md:text-xl leading-relaxed mb-8 italic">"{testimonials[active].text}"</p>
-            <div>
-              <div className="font-display font-bold text-surface-foreground text-lg">{testimonials[active].name}</div>
-              <div className="text-surface-foreground/50 text-sm">{testimonials[active].company}</div>
+    <section className="py-32 bg-muted overflow-hidden">
+      <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-12 gap-12 items-center" ref={ref}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="col-span-12 lg:col-span-5"
+          >
+            <span className="text-accent text-xs font-bold uppercase tracking-widest block mb-4">
+              {t("testimonials.subtitle")}
+            </span>
+            <h2 className="text-5xl font-bold uppercase tracking-tighter leading-[0.9] text-foreground mb-8">
+              {t("testimonials.title")}
+            </h2>
+            <div className="flex gap-3">
+              <button
+                onClick={prev}
+                className="w-12 h-12 border border-foreground/20 flex items-center justify-center text-foreground/50 hover:text-primary hover:border-primary transition-all"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={next}
+                className="w-12 h-12 border border-foreground/20 flex items-center justify-center text-foreground/50 hover:text-primary hover:border-primary transition-all"
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </motion.div>
-          <div className="flex justify-center gap-4 mt-8">
-            <button onClick={prev} className="w-12 h-12 rounded-full border border-surface-foreground/20 flex items-center justify-center text-surface-foreground/60 hover:text-primary hover:border-primary transition-all">
-              <ChevronLeft size={20} />
-            </button>
-            <button onClick={next} className="w-12 h-12 rounded-full border border-surface-foreground/20 flex items-center justify-center text-surface-foreground/60 hover:text-primary hover:border-primary transition-all">
-              <ChevronRight size={20} />
-            </button>
+
+          <div className="col-span-12 lg:col-span-6 lg:col-start-7">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-background border border-border p-10 lg:p-12"
+            >
+              <div className="flex gap-1 mb-6">
+                {Array.from({ length: testimonials[active].rating }).map((_, i) => (
+                  <Star key={i} size={16} className="fill-primary text-primary" />
+                ))}
+              </div>
+              <p className="text-foreground text-xl lg:text-2xl leading-relaxed font-light mb-10 italic">
+                "{testimonials[active].text}"
+              </p>
+              <div className="border-t border-border pt-6">
+                <div className="font-bold text-foreground uppercase tracking-wider text-sm">
+                  {testimonials[active].name}
+                </div>
+                <div className="text-muted-foreground text-xs uppercase tracking-widest mt-1">
+                  {testimonials[active].company}
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

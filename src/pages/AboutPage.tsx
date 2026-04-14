@@ -46,55 +46,54 @@ const AboutPage = () => {
 
   return (
     <>
-      <section className="section-dark relative overflow-hidden pt-32 pb-20">
-        <div className="grain-overlay" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-20" ref={heroRef}>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-primary font-semibold tracking-widest uppercase text-sm mb-4">
+      {/* Hero */}
+      <section className="bg-secondary relative overflow-hidden pt-40 pb-24">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 relative z-20" ref={heroRef}>
+          <motion.span initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-accent text-xs font-bold uppercase tracking-widest block mb-6">
             {t("about_page.title")}
-          </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl text-surface-foreground leading-tight mb-6">
+          </motion.span>
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter uppercase text-surface-foreground leading-[0.85] mb-6">
             {t("about_page.title")}
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/70 text-lg md:text-xl max-w-2xl">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={heroInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.2 }} className="text-surface-foreground/50 text-lg lg:text-xl max-w-2xl font-light">
             {t("about_page.subtitle")}
           </motion.p>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+      {/* Mission + Stats */}
+      <section className="py-24 bg-background">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-6">{t("about_page.missionTitle")}</h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-4">{t("about_page.missionDesc")}</p>
+            <span className="text-accent text-xs font-bold uppercase tracking-widest block mb-4">Mission</span>
+            <h2 className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter text-foreground mb-6">{t("about_page.missionTitle")}</h2>
+            <p className="text-muted-foreground text-lg font-light leading-relaxed">{t("about_page.missionDesc")}</p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <div key={stat.label} className="rounded-2xl border border-border bg-card p-6 text-center hover-lift">
-                  <Icon className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <p className="font-display font-extrabold text-3xl text-foreground">{stat.value}</p>
-                  <p className="text-muted-foreground text-sm mt-1">{stat.label}</p>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-2 gap-px bg-border">
+            {stats.map((stat) => (
+              <div key={stat.label} className="bg-background p-8 text-center">
+                <p className="text-4xl font-bold tabular-nums text-foreground mb-1">{stat.value}</p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section-light py-20" ref={valuesRef}>
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={valuesInView ? { opacity: 1, y: 0 } : {}} className="font-display font-bold text-3xl md:text-4xl text-foreground text-center mb-12">
+      {/* Values */}
+      <section className="py-24 bg-secondary" ref={valuesRef}>
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={valuesInView ? { opacity: 1, y: 0 } : {}} className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter text-surface-foreground text-center mb-16">
             {t("about_page.valuesTitle")}
           </motion.h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-surface-foreground/5">
             {values.map((v, i) => {
               const Icon = v.icon;
               return (
-                <motion.div key={v.title} initial={{ opacity: 0, y: 30 }} animate={valuesInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.1 }} className="rounded-2xl border border-border bg-card p-8 text-center hover-lift">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-5"><Icon className="w-7 h-7 text-primary" /></div>
-                  <h3 className="font-display font-bold text-xl text-foreground mb-2">{v.title}</h3>
-                  <p className="text-muted-foreground text-sm">{v.description}</p>
+                <motion.div key={v.title} initial={{ opacity: 0, y: 30 }} animate={valuesInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.1 }} className="bg-surface-foreground/[0.02] p-10 text-center group hover:bg-primary transition-colors duration-500">
+                  <Icon className="w-8 h-8 text-primary mx-auto mb-5 group-hover:text-primary-foreground transition-colors" />
+                  <h3 className="font-bold text-lg uppercase tracking-wider text-surface-foreground mb-2 group-hover:text-primary-foreground transition-colors">{v.title}</h3>
+                  <p className="text-surface-foreground/50 text-sm group-hover:text-primary-foreground/70 transition-colors">{v.description}</p>
                 </motion.div>
               );
             })}
@@ -102,20 +101,21 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-background" ref={timelineRef}>
-        <div className="container mx-auto px-4 lg:px-8">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={timelineInView ? { opacity: 1, y: 0 } : {}} className="font-display font-bold text-3xl md:text-4xl text-foreground text-center mb-16">
+      {/* Timeline */}
+      <section className="py-24 bg-background" ref={timelineRef}>
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={timelineInView ? { opacity: 1, y: 0 } : {}} className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter text-foreground text-center mb-20">
             {t("about_page.timelineTitle")}
           </motion.h2>
-          <div className="relative max-w-3xl mx-auto">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
+          <div className="max-w-3xl mx-auto space-y-0">
             {milestones.map((m, i) => (
-              <motion.div key={m.year} initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }} animate={timelineInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: i * 0.12 }} className={`relative flex items-start mb-10 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} flex-row`}>
-                <div className="absolute left-4 md:left-1/2 w-3 h-3 rounded-full bg-primary -translate-x-1/2 mt-2 z-10" />
-                <div className={`ml-10 md:ml-0 md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:mr-auto md:pr-8 md:text-right" : "md:ml-auto md:pl-8"}`}>
-                  <span className="inline-flex items-center gap-1 text-primary font-mono-track font-semibold text-sm mb-1"><Calendar className="w-3.5 h-3.5" /> {m.year}</span>
-                  <h3 className="font-display font-bold text-lg text-foreground">{m.title}</h3>
-                  <p className="text-muted-foreground text-sm">{m.description}</p>
+              <motion.div key={m.year} initial={{ opacity: 0, y: 20 }} animate={timelineInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.1 }} className="flex gap-8 py-8 border-b border-border group hover:bg-muted/50 px-4 -mx-4 transition-colors">
+                <span className="text-3xl font-bold tabular-nums text-muted-foreground/30 group-hover:text-primary transition-colors shrink-0 w-20">
+                  {m.year}
+                </span>
+                <div>
+                  <h3 className="font-bold text-lg uppercase tracking-tight text-foreground">{m.title}</h3>
+                  <p className="text-muted-foreground text-sm mt-1">{m.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -123,20 +123,20 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <section className="section-dark py-20 relative overflow-hidden" ref={teamRef}>
-        <div className="grain-overlay" />
-        <div className="container mx-auto px-4 lg:px-8 relative z-20">
-          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={teamInView ? { opacity: 1, y: 0 } : {}} className="font-display font-bold text-3xl md:text-4xl text-surface-foreground text-center mb-12">
+      {/* Team */}
+      <section className="py-24 bg-secondary" ref={teamRef}>
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} animate={teamInView ? { opacity: 1, y: 0 } : {}} className="text-4xl lg:text-5xl font-bold uppercase tracking-tighter text-surface-foreground text-center mb-16">
             {t("about_page.teamTitle")}
           </motion.h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-surface-foreground/5">
             {team.map((member, i) => (
-              <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} animate={teamInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.1 }} className="glass-card p-8 text-center group">
-                <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors">
-                  <span className="font-display font-bold text-xl text-primary">{member.initials}</span>
+              <motion.div key={member.name} initial={{ opacity: 0, y: 30 }} animate={teamInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: i * 0.1 }} className="bg-surface-foreground/[0.02] p-10 text-center group">
+                <div className="w-20 h-20 border border-primary/30 flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/10 transition-colors">
+                  <span className="font-bold text-xl text-primary">{member.initials}</span>
                 </div>
-                <h3 className="font-display font-bold text-lg text-surface-foreground">{member.name}</h3>
-                <p className="text-surface-foreground/60 text-sm">{member.role}</p>
+                <h3 className="font-bold text-sm uppercase tracking-wider text-surface-foreground">{member.name}</h3>
+                <p className="text-surface-foreground/40 text-xs uppercase tracking-widest mt-1">{member.role}</p>
               </motion.div>
             ))}
           </div>
