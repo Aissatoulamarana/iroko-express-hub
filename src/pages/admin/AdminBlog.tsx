@@ -100,7 +100,7 @@ const AdminBlog = () => {
                       <td className="p-4 text-foreground font-medium">{p.title}</td>
                       <td className="p-4 text-muted-foreground hidden md:table-cell">{p.category || "—"}</td>
                       <td className="p-4">
-                        <Badge className={p.status === "published" ? "bg-emerald-500/20 text-emerald-400" : "bg-muted text-muted-foreground"}>
+                        <Badge variant="secondary" className={p.status === "published" ? "bg-success/15 text-success border border-success/20" : "bg-muted text-muted-foreground border border-border"}>
                           {p.status === "published" ? "Publié" : "Brouillon"}
                         </Badge>
                       </td>
