@@ -4,6 +4,7 @@ import ServicesGrid from "@/components/home/ServicesGrid";
 import AboutSection from "@/components/home/AboutSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
+import FAQSection from "@/components/home/FAQSection";
 import CTABanner from "@/components/home/CTABanner";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <AboutSection />
       <HowItWorks />
       <TestimonialsSection />
+      <FAQSection />
       <CTABanner />
     </>
   );
