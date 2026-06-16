@@ -19,9 +19,11 @@ const statusLabels: Record<string, string> = {
   new: "Nouveau", in_progress: "En cours", sent: "Envoyé", accepted: "Accepté", refused: "Refusé",
 };
 const statusColors: Record<string, string> = {
-  new: "bg-primary/20 text-primary", in_progress: "bg-sky-500/20 text-sky-400",
-  sent: "bg-amber-500/20 text-amber-400", accepted: "bg-emerald-500/20 text-emerald-400",
-  refused: "bg-red-500/20 text-red-400",
+  new: "bg-primary/15 text-foreground border border-primary/30",
+  in_progress: "bg-info/15 text-info border border-info/20",
+  sent: "bg-warning/15 text-[hsl(var(--warning-foreground))] border border-warning/30",
+  accepted: "bg-success/15 text-success border border-success/20",
+  refused: "bg-destructive/15 text-destructive border border-destructive/20",
 };
 
 const AdminQuotes = () => {
