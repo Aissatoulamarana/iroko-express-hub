@@ -110,6 +110,27 @@
     "featured": "À la une",
     "noArticles": "Aucun article dans cette catégorie."
   },
+  "faq": {
+    "tag": "FAQ",
+    "title": "Questions fréquentes",
+    "subtitle": "Tout ce que vous devez savoir avant d'expédier avec Iroko Express.",
+    "items": [
+      { "q": "Quels sont les délais moyens de transit ?", "a": "Comptez 5 à 9 jours en fret aérien et 30 à 45 jours en fret maritime entre la Chine et Kinshasa, dédouanement inclus." },
+      { "q": "Comment obtenir un devis ?", "a": "Remplissez notre formulaire de devis en ligne ou contactez-nous sur WhatsApp. Vous recevez une proposition personnalisée en moins de 24 heures." },
+      { "q": "Puis-je suivre mon colis en temps réel ?", "a": "Oui. Chaque expédition dispose d'un numéro de suivi unique, accessible 24/7 depuis la page Suivi avec mises à jour automatiques à chaque étape." },
+      { "q": "Prenez-vous en charge le dédouanement ?", "a": "Oui, nos équipes sont agréées en RDC et au Cameroun. Nous gérons l'intégralité des formalités douanières pour vous éviter tout retard." },
+      { "q": "Faites-vous du sourcing en Chine ?", "a": "Oui. Nos agents basés en Chine sélectionnent les fournisseurs, négocient les prix, contrôlent la qualité et organisent l'expédition." },
+      { "q": "Quels modes de paiement acceptez-vous ?", "a": "Virement bancaire, Mobile Money, et paiement sécurisé en ligne. Les conditions sont précisées dans votre devis." }
+    ]
+  },
+  "shortcuts": {
+    "open": "Nous contacter",
+    "close": "Fermer",
+    "whatsapp": "WhatsApp",
+    "call": "Appeler",
+    "email": "Email",
+    "quote": "Demander un devis"
+  },
   "footer": {
     "description": "Votre partenaire logistique de confiance pour le transit, l'import/export et le dédouanement entre l'Afrique et le monde.",
     "services": "Services",

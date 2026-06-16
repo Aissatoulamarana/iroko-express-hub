@@ -110,6 +110,27 @@
     "featured": "Featured",
     "noArticles": "No articles in this category."
   },
+  "faq": {
+    "tag": "FAQ",
+    "title": "Frequently asked questions",
+    "subtitle": "Everything you need to know before shipping with Iroko Express.",
+    "items": [
+      { "q": "What are typical transit times?", "a": "Allow 5–9 days for air freight and 30–45 days for sea freight between China and Kinshasa, customs clearance included." },
+      { "q": "How do I get a quote?", "a": "Fill out our online quote form or message us on WhatsApp. You'll receive a tailored proposal in under 24 hours." },
+      { "q": "Can I track my shipment in real time?", "a": "Yes. Each shipment has a unique tracking number, accessible 24/7 from the Tracking page with automatic updates at every milestone." },
+      { "q": "Do you handle customs clearance?", "a": "Yes. Our teams are licensed in DRC and Cameroon and handle the full customs process so you avoid delays." },
+      { "q": "Do you offer sourcing from China?", "a": "Yes. Our agents in China select suppliers, negotiate prices, run quality checks and organize shipping." },
+      { "q": "Which payment methods do you accept?", "a": "Bank transfer, Mobile Money, and secure online payment. Terms are detailed in your quote." }
+    ]
+  },
+  "shortcuts": {
+    "open": "Contact us",
+    "close": "Close",
+    "whatsapp": "WhatsApp",
+    "call": "Call",
+    "email": "Email",
+    "quote": "Request a quote"
+  },
   "footer": {
     "description": "Your trusted logistics partner for transit, import/export and customs clearance between Africa and the world.",
     "services": "Services",
