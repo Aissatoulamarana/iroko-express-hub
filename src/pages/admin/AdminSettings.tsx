@@ -37,21 +37,21 @@ const AdminSettings = () => {
 
   return (
     <div className="space-y-6 max-w-2xl">
-      <h1 className="font-display font-bold text-2xl text-surface-foreground">Paramètres</h1>
+      <h1 className="font-display font-bold text-2xl text-foreground">Paramètres</h1>
 
-      <Card className="bg-surface-foreground/5 border-surface-foreground/10">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-surface-foreground">Changer le mot de passe</CardTitle>
+          <CardTitle className="text-foreground">Changer le mot de passe</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={changePassword} className="space-y-4">
             <div className="space-y-1.5">
-              <Label className="text-surface-foreground/60">Nouveau mot de passe</Label>
-              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" required />
+              <Label className="text-muted-foreground">Nouveau mot de passe</Label>
+              <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="bg-card border-border text-foreground" required />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-surface-foreground/60">Confirmer le mot de passe</Label>
-              <Input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" required />
+              <Label className="text-muted-foreground">Confirmer le mot de passe</Label>
+              <Input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="bg-card border-border text-foreground" required />
             </div>
             <Button type="submit" className="bg-primary text-primary-foreground" disabled={loading}>
               {loading && <Loader2 className="animate-spin mr-2" />}
@@ -61,15 +61,15 @@ const AdminSettings = () => {
         </CardContent>
       </Card>
 
-      <Card className="bg-surface-foreground/5 border-surface-foreground/10">
+      <Card className="bg-card border-border">
         <CardHeader>
-          <CardTitle className="text-surface-foreground">Informations de l'entreprise</CardTitle>
+          <CardTitle className="text-foreground">Informations de l'entreprise</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3 text-sm text-surface-foreground/70">
-          <p><strong className="text-surface-foreground">Nom :</strong> Iroko Express</p>
-          <p><strong className="text-surface-foreground">Adresse :</strong> 123 Av. de la Libération, Kinshasa, RDC</p>
-          <p><strong className="text-surface-foreground">Téléphone :</strong> +243 81 234 5678</p>
-          <p><strong className="text-surface-foreground">Email :</strong> contact@irokoexpress.com</p>
+        <CardContent className="space-y-3 text-sm text-muted-foreground">
+          <p><strong className="text-foreground">Nom :</strong> Iroko Express</p>
+          <p><strong className="text-foreground">Adresse :</strong> 123 Av. de la Libération, Kinshasa, RDC</p>
+          <p><strong className="text-foreground">Téléphone :</strong> +243 81 234 5678</p>
+          <p><strong className="text-foreground">Email :</strong> contact@irokoexpress.com</p>
         </CardContent>
       </Card>
     </div>

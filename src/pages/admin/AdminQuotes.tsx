@@ -19,9 +19,11 @@ const statusLabels: Record<string, string> = {
   new: "Nouveau", in_progress: "En cours", sent: "Envoyé", accepted: "Accepté", refused: "Refusé",
 };
 const statusColors: Record<string, string> = {
-  new: "bg-primary/20 text-primary", in_progress: "bg-sky-500/20 text-sky-400",
-  sent: "bg-amber-500/20 text-amber-400", accepted: "bg-emerald-500/20 text-emerald-400",
-  refused: "bg-red-500/20 text-red-400",
+  new: "bg-primary/15 text-foreground border border-primary/30",
+  in_progress: "bg-info/15 text-info border border-info/20",
+  sent: "bg-warning/15 text-[hsl(var(--warning-foreground))] border border-warning/30",
+  accepted: "bg-success/15 text-success border border-success/20",
+  refused: "bg-destructive/15 text-destructive border border-destructive/20",
 };
 
 const AdminQuotes = () => {
@@ -58,24 +60,24 @@ const AdminQuotes = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="font-display font-bold text-2xl text-surface-foreground">Devis reçus</h1>
+      <h1 className="font-display font-bold text-2xl text-foreground">Devis reçus</h1>
 
       <div className="relative max-w-md">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-foreground/40" />
-        <Input placeholder="Rechercher par nom ou email..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10 bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Input placeholder="Rechercher par nom ou email..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10 bg-card border-border text-foreground" />
       </div>
 
-      <Card className="bg-surface-foreground/5 border-surface-foreground/10 overflow-hidden">
+      <Card className="bg-card border-border overflow-hidden">
         <CardContent className="p-0">
           {loading ? (
             <div className="flex justify-center py-12"><Loader2 className="animate-spin text-primary w-6 h-6" /></div>
           ) : filtered.length === 0 ? (
-            <p className="text-center text-surface-foreground/40 py-12">Aucun devis.</p>
+            <p className="text-center text-muted-foreground py-12">Aucun devis.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-surface-foreground/10 text-surface-foreground/50">
+                  <tr className="border-b border-border text-muted-foreground">
                     <th className="text-left p-4">Nom</th>
                     <th className="text-left p-4 hidden md:table-cell">Type</th>
                     <th className="text-left p-4 hidden md:table-cell">Email</th>
@@ -85,12 +87,12 @@ const AdminQuotes = () => {
                 </thead>
                 <tbody>
                   {filtered.map((q) => (
-                    <tr key={q.id} onClick={() => openDetail(q)} className="border-b border-surface-foreground/5 hover:bg-surface-foreground/5 cursor-pointer transition">
-                      <td className="p-4 text-surface-foreground font-medium">{q.name}</td>
-                      <td className="p-4 text-surface-foreground/60 hidden md:table-cell capitalize">{q.type}</td>
-                      <td className="p-4 text-surface-foreground/60 hidden md:table-cell">{q.email}</td>
+                    <tr key={q.id} onClick={() => openDetail(q)} className="border-b border-border/60 hover:bg-card cursor-pointer transition">
+                      <td className="p-4 text-foreground font-medium">{q.name}</td>
+                      <td className="p-4 text-muted-foreground hidden md:table-cell capitalize">{q.type}</td>
+                      <td className="p-4 text-muted-foreground hidden md:table-cell">{q.email}</td>
                       <td className="p-4"><Badge className={statusColors[q.status] || ""}>{statusLabels[q.status] || q.status}</Badge></td>
-                      <td className="p-4 text-surface-foreground/40 hidden lg:table-cell">{new Date(q.created_at).toLocaleDateString("fr")}</td>
+                      <td className="p-4 text-muted-foreground hidden lg:table-cell">{new Date(q.created_at).toLocaleDateString("fr")}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -101,26 +103,26 @@ const AdminQuotes = () => {
       </Card>
 
       <Sheet open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
-        <SheetContent className="bg-surface border-surface-foreground/10 text-surface-foreground w-full sm:max-w-lg overflow-y-auto">
+        <SheetContent className="bg-background border-border text-foreground w-full sm:max-w-lg overflow-y-auto">
           {selected && (
             <>
-              <SheetHeader><SheetTitle className="text-surface-foreground font-display">Devis de {selected.name}</SheetTitle></SheetHeader>
+              <SheetHeader><SheetTitle className="text-foreground font-display">Devis de {selected.name}</SheetTitle></SheetHeader>
               <div className="mt-6 space-y-4 text-sm">
                 <div className="grid grid-cols-2 gap-4">
-                  <div><span className="text-surface-foreground/50">Type</span><p className="capitalize">{selected.type}</p></div>
-                  <div><span className="text-surface-foreground/50">Urgence</span><p>{selected.urgency || "—"}</p></div>
-                  <div><span className="text-surface-foreground/50">Origine</span><p>{selected.origin || "—"}</p></div>
-                  <div><span className="text-surface-foreground/50">Destination</span><p>{selected.destination || "—"}</p></div>
-                  <div><span className="text-surface-foreground/50">Cargo</span><p>{selected.cargo_type || "—"}</p></div>
-                  <div><span className="text-surface-foreground/50">Poids</span><p>{selected.weight || "—"}</p></div>
-                  <div><span className="text-surface-foreground/50">Email</span><p>{selected.email}</p></div>
-                  <div><span className="text-surface-foreground/50">Téléphone</span><p>{selected.phone || "—"}</p></div>
+                  <div><span className="text-muted-foreground">Type</span><p className="capitalize">{selected.type}</p></div>
+                  <div><span className="text-muted-foreground">Urgence</span><p>{selected.urgency || "—"}</p></div>
+                  <div><span className="text-muted-foreground">Origine</span><p>{selected.origin || "—"}</p></div>
+                  <div><span className="text-muted-foreground">Destination</span><p>{selected.destination || "—"}</p></div>
+                  <div><span className="text-muted-foreground">Cargo</span><p>{selected.cargo_type || "—"}</p></div>
+                  <div><span className="text-muted-foreground">Poids</span><p>{selected.weight || "—"}</p></div>
+                  <div><span className="text-muted-foreground">Email</span><p>{selected.email}</p></div>
+                  <div><span className="text-muted-foreground">Téléphone</span><p>{selected.phone || "—"}</p></div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-surface-foreground/60">Statut</Label>
+                  <Label className="text-muted-foreground">Statut</Label>
                   <Select value={selected.status} onValueChange={(v) => { updateQuote(selected.id, { status: v }); setSelected({ ...selected, status: v }); }}>
-                    <SelectTrigger className="bg-surface-foreground/5 border-surface-foreground/10"><SelectValue /></SelectTrigger>
+                    <SelectTrigger className="bg-card border-border"><SelectValue /></SelectTrigger>
                     <SelectContent>
                       {statusOptions.map((s) => <SelectItem key={s} value={s}>{statusLabels[s]}</SelectItem>)}
                     </SelectContent>
@@ -128,8 +130,8 @@ const AdminQuotes = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label className="text-surface-foreground/60">Notes internes</Label>
-                  <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" rows={4} />
+                  <Label className="text-muted-foreground">Notes internes</Label>
+                  <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} className="bg-card border-border text-foreground" rows={4} />
                   <Button size="sm" onClick={() => updateQuote(selected.id, { admin_notes: notes })} className="bg-primary text-primary-foreground">Sauvegarder</Button>
                 </div>
               </div>

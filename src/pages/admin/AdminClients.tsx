@@ -48,28 +48,28 @@ const AdminClients = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <h1 className="font-display font-bold text-2xl text-surface-foreground">Clients</h1>
+        <h1 className="font-display font-bold text-2xl text-foreground">Clients</h1>
         <Button onClick={() => setCreating(true)} className="bg-primary text-primary-foreground">
           <Plus className="w-4 h-4 mr-2" /> Nouveau client
         </Button>
       </div>
 
       <div className="relative max-w-md">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-foreground/40" />
-        <Input placeholder="Rechercher..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10 bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Input placeholder="Rechercher..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10 bg-card border-border text-foreground" />
       </div>
 
-      <Card className="bg-surface-foreground/5 border-surface-foreground/10 overflow-hidden">
+      <Card className="bg-card border-border overflow-hidden">
         <CardContent className="p-0">
           {loading ? (
             <div className="flex justify-center py-12"><Loader2 className="animate-spin text-primary w-6 h-6" /></div>
           ) : filtered.length === 0 ? (
-            <p className="text-center text-surface-foreground/40 py-12">Aucun client.</p>
+            <p className="text-center text-muted-foreground py-12">Aucun client.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-surface-foreground/10 text-surface-foreground/50">
+                  <tr className="border-b border-border text-muted-foreground">
                     <th className="text-left p-4">Nom</th>
                     <th className="text-left p-4 hidden md:table-cell">Entreprise</th>
                     <th className="text-left p-4 hidden md:table-cell">Email</th>
@@ -79,12 +79,12 @@ const AdminClients = () => {
                 </thead>
                 <tbody>
                   {filtered.map((c) => (
-                    <tr key={c.id} className="border-b border-surface-foreground/5 hover:bg-surface-foreground/5 transition">
-                      <td className="p-4 text-surface-foreground font-medium">{c.name}</td>
-                      <td className="p-4 text-surface-foreground/60 hidden md:table-cell">{c.company || "—"}</td>
-                      <td className="p-4 text-surface-foreground/60 hidden md:table-cell">{c.email || "—"}</td>
-                      <td className="p-4 text-surface-foreground/60 hidden lg:table-cell">{c.country || "—"}</td>
-                      <td className="p-4 text-surface-foreground/40 hidden lg:table-cell">{new Date(c.created_at).toLocaleDateString("fr")}</td>
+                    <tr key={c.id} className="border-b border-border/60 hover:bg-card transition">
+                      <td className="p-4 text-foreground font-medium">{c.name}</td>
+                      <td className="p-4 text-muted-foreground hidden md:table-cell">{c.company || "—"}</td>
+                      <td className="p-4 text-muted-foreground hidden md:table-cell">{c.email || "—"}</td>
+                      <td className="p-4 text-muted-foreground hidden lg:table-cell">{c.country || "—"}</td>
+                      <td className="p-4 text-muted-foreground hidden lg:table-cell">{new Date(c.created_at).toLocaleDateString("fr")}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -95,8 +95,8 @@ const AdminClients = () => {
       </Card>
 
       <Sheet open={creating} onOpenChange={setCreating}>
-        <SheetContent className="bg-surface border-surface-foreground/10 text-surface-foreground w-full sm:max-w-lg">
-          <SheetHeader><SheetTitle className="text-surface-foreground font-display">Nouveau client</SheetTitle></SheetHeader>
+        <SheetContent className="bg-background border-border text-foreground w-full sm:max-w-lg">
+          <SheetHeader><SheetTitle className="text-foreground font-display">Nouveau client</SheetTitle></SheetHeader>
           <form onSubmit={create} className="mt-6 space-y-4">
             {[
               { key: "name", label: "Nom *", required: true },
@@ -106,8 +106,8 @@ const AdminClients = () => {
               { key: "country", label: "Pays" },
             ].map((f) => (
               <div key={f.key} className="space-y-1.5">
-                <Label className="text-surface-foreground/60">{f.label}</Label>
-                <Input type={f.type || "text"} value={(form as any)[f.key]} onChange={(e) => setForm((p) => ({ ...p, [f.key]: e.target.value }))} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" required={f.required} />
+                <Label className="text-muted-foreground">{f.label}</Label>
+                <Input type={f.type || "text"} value={(form as any)[f.key]} onChange={(e) => setForm((p) => ({ ...p, [f.key]: e.target.value }))} className="bg-card border-border text-foreground" required={f.required} />
               </div>
             ))}
             <Button type="submit" className="w-full bg-primary text-primary-foreground" disabled={saving}>

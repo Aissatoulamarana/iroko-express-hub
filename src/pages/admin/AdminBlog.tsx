@@ -71,23 +71,23 @@ const AdminBlog = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <h1 className="font-display font-bold text-2xl text-surface-foreground">Blog</h1>
+        <h1 className="font-display font-bold text-2xl text-foreground">Blog</h1>
         <Button onClick={() => { setCreating(true); setForm(emptyForm); }} className="bg-primary text-primary-foreground">
           <Plus className="w-4 h-4 mr-2" /> Nouvel article
         </Button>
       </div>
 
-      <Card className="bg-surface-foreground/5 border-surface-foreground/10 overflow-hidden">
+      <Card className="bg-card border-border overflow-hidden">
         <CardContent className="p-0">
           {loading ? (
             <div className="flex justify-center py-12"><Loader2 className="animate-spin text-primary w-6 h-6" /></div>
           ) : posts.length === 0 ? (
-            <p className="text-center text-surface-foreground/40 py-12">Aucun article.</p>
+            <p className="text-center text-muted-foreground py-12">Aucun article.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-surface-foreground/10 text-surface-foreground/50">
+                  <tr className="border-b border-border text-muted-foreground">
                     <th className="text-left p-4">Titre</th>
                     <th className="text-left p-4 hidden md:table-cell">Catégorie</th>
                     <th className="text-left p-4">Statut</th>
@@ -96,15 +96,15 @@ const AdminBlog = () => {
                 </thead>
                 <tbody>
                   {posts.map((p) => (
-                    <tr key={p.id} onClick={() => openEdit(p)} className="border-b border-surface-foreground/5 hover:bg-surface-foreground/5 cursor-pointer transition">
-                      <td className="p-4 text-surface-foreground font-medium">{p.title}</td>
-                      <td className="p-4 text-surface-foreground/60 hidden md:table-cell">{p.category || "—"}</td>
+                    <tr key={p.id} onClick={() => openEdit(p)} className="border-b border-border/60 hover:bg-card cursor-pointer transition">
+                      <td className="p-4 text-foreground font-medium">{p.title}</td>
+                      <td className="p-4 text-muted-foreground hidden md:table-cell">{p.category || "—"}</td>
                       <td className="p-4">
-                        <Badge className={p.status === "published" ? "bg-emerald-500/20 text-emerald-400" : "bg-surface-foreground/10 text-surface-foreground/60"}>
+                        <Badge variant="secondary" className={p.status === "published" ? "bg-success/15 text-success border border-success/20" : "bg-muted text-muted-foreground border border-border"}>
                           {p.status === "published" ? "Publié" : "Brouillon"}
                         </Badge>
                       </td>
-                      <td className="p-4 text-surface-foreground/40 hidden lg:table-cell">{new Date(p.created_at).toLocaleDateString("fr")}</td>
+                      <td className="p-4 text-muted-foreground hidden lg:table-cell">{new Date(p.created_at).toLocaleDateString("fr")}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -115,9 +115,9 @@ const AdminBlog = () => {
       </Card>
 
       <Sheet open={isOpen} onOpenChange={(o) => { if (!o) { setEditing(null); setCreating(false); } }}>
-        <SheetContent className="bg-surface border-surface-foreground/10 text-surface-foreground w-full sm:max-w-lg overflow-y-auto">
+        <SheetContent className="bg-background border-border text-foreground w-full sm:max-w-lg overflow-y-auto">
           <SheetHeader>
-            <SheetTitle className="text-surface-foreground font-display">{editing ? "Modifier l'article" : "Nouvel article"}</SheetTitle>
+            <SheetTitle className="text-foreground font-display">{editing ? "Modifier l'article" : "Nouvel article"}</SheetTitle>
           </SheetHeader>
           <form onSubmit={save} className="mt-6 space-y-4">
             {[
@@ -129,22 +129,22 @@ const AdminBlog = () => {
               { key: "meta_desc", label: "Meta description (SEO)" },
             ].map((f) => (
               <div key={f.key} className="space-y-1.5">
-                <Label className="text-surface-foreground/60">{f.label}</Label>
-                <Input value={(form as any)[f.key]} onChange={(e) => setForm((p) => ({ ...p, [f.key]: e.target.value }))} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" required={f.required} />
+                <Label className="text-muted-foreground">{f.label}</Label>
+                <Input value={(form as any)[f.key]} onChange={(e) => setForm((p) => ({ ...p, [f.key]: e.target.value }))} className="bg-card border-border text-foreground" required={f.required} />
               </div>
             ))}
             <div className="space-y-1.5">
-              <Label className="text-surface-foreground/60">Extrait</Label>
-              <Textarea value={form.excerpt} onChange={(e) => setForm((p) => ({ ...p, excerpt: e.target.value }))} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" rows={2} />
+              <Label className="text-muted-foreground">Extrait</Label>
+              <Textarea value={form.excerpt} onChange={(e) => setForm((p) => ({ ...p, excerpt: e.target.value }))} className="bg-card border-border text-foreground" rows={2} />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-surface-foreground/60">Contenu</Label>
-              <Textarea value={form.content} onChange={(e) => setForm((p) => ({ ...p, content: e.target.value }))} className="bg-surface-foreground/5 border-surface-foreground/10 text-surface-foreground" rows={8} />
+              <Label className="text-muted-foreground">Contenu</Label>
+              <Textarea value={form.content} onChange={(e) => setForm((p) => ({ ...p, content: e.target.value }))} className="bg-card border-border text-foreground" rows={8} />
             </div>
             <div className="space-y-1.5">
-              <Label className="text-surface-foreground/60">Statut</Label>
+              <Label className="text-muted-foreground">Statut</Label>
               <Select value={form.status} onValueChange={(v) => setForm((p) => ({ ...p, status: v }))}>
-                <SelectTrigger className="bg-surface-foreground/5 border-surface-foreground/10"><SelectValue /></SelectTrigger>
+                <SelectTrigger className="bg-card border-border"><SelectValue /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="draft">Brouillon</SelectItem>
                   <SelectItem value="published">Publié</SelectItem>
