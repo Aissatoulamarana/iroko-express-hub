@@ -1,3 +1,4 @@
+import { STATUS_LABELS, STATUS_TONES, ALL_STATUSES, ACTIVE_STATUSES, LIFECYCLE, nextStatus } from "@/lib/logistics";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Package, Truck, CheckCircle2, AlertCircle, ArrowUpRight } from "lucide-react";
@@ -18,12 +19,6 @@ const STATUS_COLORS: Record<string, string> = {
   customs: "hsl(38 92% 50%)",
   delivered: "hsl(152 76% 36%)",
   blocked: "hsl(0 84% 60%)",
-};
-const STATUS_LABELS: Record<string, string> = {
-  created: "Created", in_transit: "In Transit", customs: "Customs", delivered: "Delivered", blocked: "Blocked",
-};
-const STATUS_TONES: Record<string, "neutral" | "info" | "warning" | "success" | "danger"> = {
-  created: "neutral", in_transit: "info", customs: "warning", delivered: "success", blocked: "danger",
 };
 
 const AdminDashboard = () => {

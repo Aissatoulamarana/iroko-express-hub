@@ -24,9 +24,14 @@ interface ShipmentEvent {
 }
 
 const statusConfig: Record<ShipmentStatus, { label: string; tone: string; icon: React.ElementType; progress: number }> = {
+  draft:      { label: "Enregistré", tone: "info",        icon: Package,     progress: 5 },
   created:    { label: "Créé",       tone: "info",        icon: Package,     progress: 15 },
-  in_transit: { label: "En transit", tone: "warning",     icon: Truck,       progress: 55 },
-  customs:    { label: "En douane",  tone: "warning",     icon: Shield,      progress: 75 },
+  confirmed:  { label: "Confirmé",   tone: "info",        icon: Package,     progress: 15 },
+  in_warehouse: { label: "En entrepôt", tone: "info",     icon: Box,         progress: 30 },
+  in_transit: { label: "En transit", tone: "warning",     icon: Truck,       progress: 50 },
+  customs:    { label: "En douane",  tone: "warning",     icon: Shield,      progress: 65 },
+  arrived:    { label: "Arrivé",     tone: "success",     icon: MapPin,      progress: 80 },
+  out_for_delivery: { label: "En livraison", tone: "warning", icon: Truck,   progress: 90 },
   delivered:  { label: "Livré",      tone: "success",     icon: CheckCircle, progress: 100 },
   blocked:    { label: "Bloqué",     tone: "destructive", icon: Ban,         progress: 50 },
 };
