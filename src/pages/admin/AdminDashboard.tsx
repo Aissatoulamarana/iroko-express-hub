@@ -15,6 +15,11 @@ import { format, subMonths, startOfMonth } from "date-fns";
 
 const STATUS_COLORS: Record<string, string> = {
   created: "hsl(220 9% 46%)",
+  draft: "hsl(220 9% 60%)",
+  confirmed: "hsl(199 89% 48%)",
+  in_warehouse: "hsl(262 60% 55%)",
+  arrived: "hsl(172 66% 40%)",
+  out_for_delivery: "hsl(25 95% 53%)",
   in_transit: "hsl(217 91% 60%)",
   customs: "hsl(38 92% 50%)",
   delivered: "hsl(152 76% 36%)",

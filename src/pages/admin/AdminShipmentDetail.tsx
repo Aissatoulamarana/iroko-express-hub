@@ -1,3 +1,5 @@
+import LifecycleStepper from "@/components/admin/LifecycleStepper";
+import ActivityTimeline from "@/components/admin/ActivityTimeline";
 import { STATUS_LABELS, STATUS_TONES, ALL_STATUSES, ACTIVE_STATUSES, LIFECYCLE, nextStatus } from "@/lib/logistics";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
@@ -156,6 +158,8 @@ const AdminShipmentDetail = () => {
         </Button>
       </div>
 
+      <LifecycleStepper shipmentId={shipment.id} status={shipment.status} location={shipment.destination} onChange={load} />
+
       <div className="grid lg:grid-cols-3 gap-5">
         {/* Info */}
         <Card className="card-premium border-0 lg:col-span-2">
@@ -195,6 +199,11 @@ const AdminShipmentDetail = () => {
             <Meta label="Last update" value={format(new Date(shipment.updated_at), "PP · HH:mm")} />
             <Meta label="Events" value={String(events.length)} />
           </CardContent>
+        </Card>
+
+        <Card className="card-premium border-0 lg:col-span-3">
+          <CardHeader><CardTitle>Historique d'audit</CardTitle></CardHeader>
+          <CardContent><ActivityTimeline entityType="shipment" entityId={shipment.id} key={shipment.updated_at} /></CardContent>
         </Card>
       </div>
 
