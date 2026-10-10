@@ -39,7 +39,7 @@ const AdminDashboard = () => {
   }, []);
 
   const total = shipments.length;
-  const active = shipments.filter((s) => s.status === "in_transit").length;
+  const active = shipments.filter((s) => ACTIVE_STATUSES.includes(s.status)).length;
   const delivered = shipments.filter((s) => s.status === "delivered").length;
   const customs = shipments.filter((s) => s.status === "customs").length;
 
@@ -58,7 +58,7 @@ const AdminDashboard = () => {
   });
 
   // Status distribution
-  const statusData = ["created", "in_transit", "customs", "delivered", "blocked"].map((s) => ({
+  const statusData = ALL_STATUSES.filter((st) => st !== "created").map((s) => ({
     name: STATUS_LABELS[s], value: shipments.filter((x) => x.status === s).length, color: STATUS_COLORS[s],
   })).filter((d) => d.value > 0);
 
