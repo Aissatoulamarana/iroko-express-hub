@@ -1,3 +1,4 @@
+import { STATUS_LABELS, STATUS_TONES, ALL_STATUSES, ACTIVE_STATUSES, LIFECYCLE, nextStatus } from "@/lib/logistics";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -20,13 +21,6 @@ import { format } from "date-fns";
 
 type Shipment = Tables<"shipments">;
 
-const STATUS_LABELS: Record<string, string> = {
-  created: "Created", in_transit: "In Transit", customs: "Customs", delivered: "Delivered", blocked: "Blocked",
-};
-const STATUS_TONES: Record<string, "neutral" | "info" | "warning" | "success" | "danger"> = {
-  created: "neutral", in_transit: "info", customs: "warning", delivered: "success", blocked: "danger",
-};
-const ALL_STATUSES = ["created", "in_transit", "customs", "delivered", "blocked"] as const;
 const PAGE_SIZE = 10;
 
 type SortKey = "created_at" | "tracking_number" | "client_name" | "destination" | "status";

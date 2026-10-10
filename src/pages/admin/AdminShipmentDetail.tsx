@@ -1,3 +1,6 @@
+import LifecycleStepper from "@/components/admin/LifecycleStepper";
+import ActivityTimeline from "@/components/admin/ActivityTimeline";
+import { STATUS_LABELS, STATUS_TONES, ALL_STATUSES, ACTIVE_STATUSES, LIFECYCLE, nextStatus } from "@/lib/logistics";
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,13 +25,6 @@ import { format } from "date-fns";
 type Shipment = Tables<"shipments">;
 type Event = Tables<"shipment_events">;
 
-const STATUS_LABELS: Record<string, string> = {
-  created: "Created", in_transit: "In Transit", customs: "Customs", delivered: "Delivered", blocked: "Blocked",
-};
-const STATUS_TONES: Record<string, "neutral" | "info" | "warning" | "success" | "danger"> = {
-  created: "neutral", in_transit: "info", customs: "warning", delivered: "success", blocked: "danger",
-};
-const ALL_STATUSES = ["created", "in_transit", "customs", "delivered", "blocked"] as const;
 
 type EventForm = { status: string; location: string; description: string; timestamp: string };
 const emptyEvent = (): EventForm => ({
@@ -162,6 +158,8 @@ const AdminShipmentDetail = () => {
         </Button>
       </div>
 
+      <LifecycleStepper shipmentId={shipment.id} status={shipment.status} location={shipment.destination} onChange={load} />
+
       <div className="grid lg:grid-cols-3 gap-5">
         {/* Info */}
         <Card className="card-premium border-0 lg:col-span-2">
@@ -201,6 +199,11 @@ const AdminShipmentDetail = () => {
             <Meta label="Last update" value={format(new Date(shipment.updated_at), "PP · HH:mm")} />
             <Meta label="Events" value={String(events.length)} />
           </CardContent>
+        </Card>
+
+        <Card className="card-premium border-0 lg:col-span-3">
+          <CardHeader><CardTitle>Historique d'audit</CardTitle></CardHeader>
+          <CardContent><ActivityTimeline entityType="shipment" entityId={shipment.id} key={shipment.updated_at} /></CardContent>
         </Card>
       </div>
 

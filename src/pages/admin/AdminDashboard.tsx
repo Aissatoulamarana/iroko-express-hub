@@ -1,3 +1,4 @@
+import { STATUS_LABELS, STATUS_TONES, ALL_STATUSES, ACTIVE_STATUSES, LIFECYCLE, nextStatus } from "@/lib/logistics";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Package, Truck, CheckCircle2, AlertCircle, ArrowUpRight } from "lucide-react";
@@ -14,16 +15,15 @@ import { format, subMonths, startOfMonth } from "date-fns";
 
 const STATUS_COLORS: Record<string, string> = {
   created: "hsl(220 9% 46%)",
+  draft: "hsl(220 9% 60%)",
+  confirmed: "hsl(199 89% 48%)",
+  in_warehouse: "hsl(262 60% 55%)",
+  arrived: "hsl(172 66% 40%)",
+  out_for_delivery: "hsl(25 95% 53%)",
   in_transit: "hsl(217 91% 60%)",
   customs: "hsl(38 92% 50%)",
   delivered: "hsl(152 76% 36%)",
   blocked: "hsl(0 84% 60%)",
-};
-const STATUS_LABELS: Record<string, string> = {
-  created: "Created", in_transit: "In Transit", customs: "Customs", delivered: "Delivered", blocked: "Blocked",
-};
-const STATUS_TONES: Record<string, "neutral" | "info" | "warning" | "success" | "danger"> = {
-  created: "neutral", in_transit: "info", customs: "warning", delivered: "success", blocked: "danger",
 };
 
 const AdminDashboard = () => {
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
   }, []);
 
   const total = shipments.length;
-  const active = shipments.filter((s) => s.status === "in_transit").length;
+  const active = shipments.filter((s) => ACTIVE_STATUSES.includes(s.status)).length;
   const delivered = shipments.filter((s) => s.status === "delivered").length;
   const customs = shipments.filter((s) => s.status === "customs").length;
 
@@ -63,7 +63,7 @@ const AdminDashboard = () => {
   });
 
   // Status distribution
-  const statusData = ["created", "in_transit", "customs", "delivered", "blocked"].map((s) => ({
+  const statusData = ALL_STATUSES.filter((st) => st !== "created").map((s) => ({
     name: STATUS_LABELS[s], value: shipments.filter((x) => x.status === s).length, color: STATUS_COLORS[s],
   })).filter((d) => d.value > 0);
 

@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      activity_logs: {
+        Row: {
+          action: string
+          actor_id: string | null
+          created_at: string
+          entity_id: string | null
+          entity_type: string
+          id: string
+          metadata: Json
+          summary: string | null
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          created_at?: string
+          entity_id?: string | null
+          entity_type: string
+          id?: string
+          metadata?: Json
+          summary?: string | null
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          created_at?: string
+          entity_id?: string | null
+          entity_type?: string
+          id?: string
+          metadata?: Json
+          summary?: string | null
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           author_id: string | null
@@ -131,6 +164,42 @@ export type Database = {
         }
         Relationships: []
       }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          entity_id: string | null
+          entity_type: string | null
+          id: string
+          link: string | null
+          read_at: string | null
+          title: string
+          type: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          entity_id?: string | null
+          entity_type?: string | null
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title: string
+          type: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          entity_id?: string | null
+          entity_type?: string | null
+          id?: string
+          link?: string | null
+          read_at?: string | null
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -162,7 +231,9 @@ export type Database = {
         Row: {
           admin_notes: string | null
           cargo_type: string | null
+          client_id: string | null
           company: string | null
+          converted_shipment_id: string | null
           created_at: string
           destination: string | null
           email: string
@@ -179,7 +250,9 @@ export type Database = {
         Insert: {
           admin_notes?: string | null
           cargo_type?: string | null
+          client_id?: string | null
           company?: string | null
+          converted_shipment_id?: string | null
           created_at?: string
           destination?: string | null
           email: string
@@ -196,7 +269,9 @@ export type Database = {
         Update: {
           admin_notes?: string | null
           cargo_type?: string | null
+          client_id?: string | null
           company?: string | null
+          converted_shipment_id?: string | null
           created_at?: string
           destination?: string | null
           email?: string
@@ -210,7 +285,29 @@ export type Database = {
           urgency?: string | null
           weight?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "quotes_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotes_converted_shipment_id_fkey"
+            columns: ["converted_shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "quotes_converted_shipment_id_fkey"
+            columns: ["converted_shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments_public"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       shipment_events: {
         Row: {
@@ -258,6 +355,7 @@ export type Database = {
         Row: {
           cargo_type: string | null
           client_email: string | null
+          client_id: string | null
           client_name: string
           created_at: string
           destination: string
@@ -265,6 +363,7 @@ export type Database = {
           id: string
           notes: string | null
           origin: string
+          quote_id: string | null
           status: Database["public"]["Enums"]["shipment_status"]
           tracking_number: string
           updated_at: string
@@ -273,6 +372,7 @@ export type Database = {
         Insert: {
           cargo_type?: string | null
           client_email?: string | null
+          client_id?: string | null
           client_name: string
           created_at?: string
           destination: string
@@ -280,6 +380,7 @@ export type Database = {
           id?: string
           notes?: string | null
           origin: string
+          quote_id?: string | null
           status?: Database["public"]["Enums"]["shipment_status"]
           tracking_number: string
           updated_at?: string
@@ -288,6 +389,7 @@ export type Database = {
         Update: {
           cargo_type?: string | null
           client_email?: string | null
+          client_id?: string | null
           client_name?: string
           created_at?: string
           destination?: string
@@ -295,12 +397,28 @@ export type Database = {
           id?: string
           notes?: string | null
           origin?: string
+          quote_id?: string | null
           status?: Database["public"]["Enums"]["shipment_status"]
           tracking_number?: string
           updated_at?: string
           weight_kg?: number | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "shipments_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "shipments_quote_id_fkey"
+            columns: ["quote_id"]
+            isOneToOne: false
+            referencedRelation: "quotes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
@@ -382,6 +500,11 @@ export type Database = {
         | "customs"
         | "delivered"
         | "blocked"
+        | "draft"
+        | "confirmed"
+        | "in_warehouse"
+        | "arrived"
+        | "out_for_delivery"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -397,12 +520,12 @@ export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
         DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -426,11 +549,11 @@ export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -451,11 +574,11 @@ export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
     | { schema: keyof DatabaseWithoutInternals },
-  TableName extends DefaultSchemaTableNameOrOptions extends {
+  TableName extends (DefaultSchemaTableNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaTableNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -476,11 +599,11 @@ export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
     | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+  EnumName extends (DefaultSchemaEnumNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
+    : never) = never,
 > = DefaultSchemaEnumNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -493,11 +616,11 @@ export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
     | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+  CompositeTypeName extends (PublicCompositeTypeNameOrOptions extends {
     schema: keyof DatabaseWithoutInternals
   }
     ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
+    : never) = never,
 > = PublicCompositeTypeNameOrOptions extends {
   schema: keyof DatabaseWithoutInternals
 }
@@ -516,6 +639,11 @@ export const Constants = {
         "customs",
         "delivered",
         "blocked",
+        "draft",
+        "confirmed",
+        "in_warehouse",
+        "arrived",
+        "out_for_delivery",
       ],
     },
   },
